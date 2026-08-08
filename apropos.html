@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — DevMatch</title>
+<meta name="description" content="Présentation de l'objectif, de l'organisation et des étapes de développement de DevMatch.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" fill="currentColor"/></svg></span>
+      DevMatch
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Accueil</a>
+      <a href="projets.html">Projets</a>
+      <a href="membres.html">Membres</a>
+      <a href="communaute.html">Communauté</a>
+      <a href="apropos.html" class="active">À propos</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<div class="hero-bg">
+  <div class="container page-hero">
+    <span class="eyebrow"><span class="dot"></span> Depuis août 2026</span>
+    <h1>Présentation de DevMatch</h1>
+    <p class="sub">DevMatch rassemble des développeurs francophones autour de projets, d'équipes et de questions techniques.</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <section class="section-tight">
+    <div class="section-head reveal">
+      <span class="kicker">Objectifs</span>
+      <h2>À quoi sert le serveur</h2>
+    </div>
+    <div class="value-list">
+      <div class="value reveal">
+        <span class="num">01</span>
+        <div><h3>Échanger sur le code</h3><p>Les salons d'entraide permettent de présenter un problème technique et de demander un avis.</p></div>
+      </div>
+      <div class="value reveal">
+        <span class="num">02</span>
+        <div><h3>Suivre les projets</h3><p>Chaque projet dispose d'un espace pour regrouper les membres, les décisions et l'avancement.</p></div>
+      </div>
+      <div class="value reveal">
+        <span class="num">03</span>
+        <div><h3>Développer par la pratique</h3><p>Les membres peuvent contribuer à un projet réel et travailler avec les contraintes définies par son équipe.</p></div>
+      </div>
+      <div class="value reveal">
+        <span class="num">04</span>
+        <div><h3>Indiquer le niveau attendu</h3><p>Chaque fiche de projet précise une difficulté pour aider les membres à choisir une contribution adaptée.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-lg section-tight">
+    <div class="section-head reveal">
+      <span class="kicker">Histoire</span>
+      <h2>Étapes du projet</h2>
+    </div>
+    <div class="timeline">
+      <div class="item reveal">
+        <span class="date">Août 2026</span>
+        <h3>Ouverture du serveur</h3>
+        <p>Ouverture de DevMatch avec un premier salon consacré aux projets.</p>
+      </div>
+      <div class="item reveal">
+        <span class="date">Quelques semaines plus tard</span>
+        <h3>Arrivée de la commande /create-project</h3>
+        <p>Ajout d'une commande pour enregistrer le titre, la description, les langages et la difficulté d'un projet.</p>
+      </div>
+      <div class="item reveal">
+        <span class="date">Aujourd'hui</span>
+        <h3>Plus de 2 200 membres</h3>
+        <p>Le serveur compte des étudiants, des indépendants, des salariés et des personnes en reconversion.</p>
+      </div>
+      <div class="item reveal">
+        <span class="date">À venir</span>
+        <h3>Connexion du site aux projets</h3>
+        <p>La prochaine étape consiste à afficher sur le site les projets enregistrés dans la base de données.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-lg section-tight">
+    <div class="cta-block reveal">
+      <h2>Consulter le serveur</h2>
+      <p>Accède aux salons pour présenter un projet, rejoindre une équipe ou poser une question.</p>
+      <a href="https://discord.gg/9CwjnsuMZ5" class="btn btn-blurple" target="_blank" rel="noopener noreferrer">Rejoindre le serveur</a>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <span class="brand-icon"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" fill="#0b0b10"/></svg></span>
+          DevMatch
+        </div>
+        <p>Serveur Discord francophone consacré aux projets et à l'entraide entre développeurs.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Plateforme</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="projets.html">Projets</a></li>
+          <li><a href="membres.html">Membres</a></li>
+          <li><a href="communaute.html">Communauté</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Fonctionnalités</h4>
+        <ul>
+          <li><a href="projets.html">Création de projet</a></li>
+          <li><a href="communaute.html">Salons thématiques</a></li>
+          <li><a href="membres.html">Profils membres</a></li>
+          <li><a href="apropos.html">Feuille de route</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>En savoir plus</h4>
+        <ul>
+          <li><a href="apropos.html">Notre histoire</a></li>
+          <li><a href="communaute.html">Règles du serveur</a></li>
+          <li><a href="apropos.html">Bonnes pratiques</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="apropos.html">Contact</a></li>
+          <li><a href="communaute.html">Aide</a></li>
+          <li><a href="#">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

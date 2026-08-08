@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevMatch — Serveur Discord pour développeurs</title>
+<meta name="description" content="DevMatch est un serveur Discord francophone pour présenter un projet, rejoindre une équipe et échanger sur le développement.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" fill="currentColor"/></svg>
+      </span>
+      DevMatch
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Accueil</a>
+      <a href="projets.html">Projets</a>
+      <a href="membres.html">Membres</a>
+      <a href="communaute.html">Communauté</a>
+      <a href="apropos.html">À propos</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<div class="hero-bg">
+  <div class="container hero">
+    <span class="eyebrow"><span class="dot"></span> 483 membres en ligne</span>
+    <h1>Un serveur Discord pour les développeurs</h1>
+    <p class="sub">Présente un projet, rejoins une équipe ou demande de l'aide sur un sujet technique.</p>
+    <div class="hero-cta">
+      <a href="https://discord.gg/9CwjnsuMZ5" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Rejoindre le serveur</a>
+      <a href="apropos.html" class="btn btn-ghost">Voir la présentation</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="stats-dock reveal">
+      <div class="stat"><strong>2 252</strong><span>Membres</span></div>
+      <div class="stat"><strong>483</strong><span>En ligne</span></div>
+      <div class="stat"><strong>640+</strong><span>Projets créés</span></div>
+      <div class="stat"><strong>Août 2026</strong><span>Ouverture du serveur</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <section class="mt-lg" id="fonctionnement">
+    <div class="section-head reveal">
+      <span class="kicker">Fonctionnement</span>
+      <h2>Utiliser DevMatch en trois étapes</h2>
+      <p>Le serveur regroupe les projets, les équipes et les échanges techniques dans des salons dédiés.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step-card reveal">
+        <div class="discord-capture">
+          <img src="assets/fonctionnement-serveur.png" width="497" height="802" loading="lazy" alt="Aperçu de la fiche du serveur Discord DevMatch avec le nombre de membres et le bouton d'accès">
+        </div>
+        <h3>1. Accède au serveur</h3>
+        <p>Utilise le lien d'invitation, puis consulte les salons disponibles.</p>
+      </article>
+
+      <article class="step-card reveal">
+        <div class="discord-capture discord-capture-phone">
+          <img src="assets/fonctionnement-projet.jpg" width="1080" height="2400" loading="lazy" alt="Commande de création d'un projet dans le salon Discord projets de DevMatch">
+        </div>
+        <h3>2. Déclare ou rejoins un projet</h3>
+        <p>La commande indique le titre, la description, les langages et la difficulté.</p>
+      </article>
+
+      <article class="step-card reveal">
+        <div class="discord-capture discord-capture-phone">
+          <img src="assets/fonctionnement-equipe.jpg" width="1080" height="2400" loading="lazy" alt="Échanges techniques entre les membres d'une équipe dans un salon Discord DevMatch">
+        </div>
+        <h3>3. Échange avec l'équipe</h3>
+        <p>Le salon du projet centralise les questions, les décisions et le suivi du travail.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="mt-lg section-tight">
+    <div class="cta-block cta-block-character reveal">
+      <div class="cta-content">
+      <h2>Ton prochain projet commence dans un salon Discord</h2>
+      <p>Rejoins le serveur, publie ton idée avec <code>/create-project</code> ou consulte les projets ouverts.</p>
+      <a href="https://discord.gg/9CwjnsuMZ5" class="btn btn-blurple" target="_blank" rel="noopener noreferrer">Rejoindre le serveur</a>
+      </div>
+      <img class="cta-character" src="assets/personnage-devmatch.png" width="1550" height="1015" loading="lazy" alt="Personnage DevMatch accoudé sur le bord du cadre">
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <span class="brand-icon">
+            <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" fill="#0b0b10"/></svg>
+          </span>
+          DevMatch
+        </div>
+        <p>Serveur Discord francophone consacré aux projets et à l'entraide entre développeurs.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Plateforme</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="projets.html">Projets</a></li>
+          <li><a href="membres.html">Membres</a></li>
+          <li><a href="communaute.html">Communauté</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Fonctionnalités</h4>
+        <ul>
+          <li><a href="projets.html">Création de projet</a></li>
+          <li><a href="communaute.html">Salons thématiques</a></li>
+          <li><a href="membres.html">Profils membres</a></li>
+          <li><a href="apropos.html">Feuille de route</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>En savoir plus</h4>
+        <ul>
+          <li><a href="apropos.html">Notre histoire</a></li>
+          <li><a href="communaute.html">Règles du serveur</a></li>
+          <li><a href="apropos.html">Bonnes pratiques</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="apropos.html">Contact</a></li>
+          <li><a href="communaute.html">Aide</a></li>
+          <li><a href="#">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
