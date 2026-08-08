@@ -3,17 +3,6 @@ import { getProjects } from './projects-service.js';
 const grid = document.getElementById('projectsGrid');
 const state = document.getElementById('projectsState');
 
-const difficultyLabels = Object.freeze({
-  facile: 'Facile',
-  moyen: 'Moyen',
-  difficile: 'Difficile',
-});
-
-const statusLabels = Object.freeze({
-  open: 'Ouvert',
-  full: 'Complet',
-});
-
 function escapeHtml(value) {
   return String(value).replace(/[&<>'"]/g, (character) => ({
     '&': '&amp;',
@@ -36,32 +25,49 @@ function memberLabel(count) {
   return `${count} ${count > 1 ? 'membres' : 'membre'}`;
 }
 
+function difficultyStars(value) {
+  const count = Number(value);
+  if (Number.isInteger(count) && count >= 1 && count <= 5) {
+    return '★'.repeat(count) + '☆'.repeat(5 - count);
+  }
+
+  const fallback = {
+    facile: '★☆☆☆☆',
+    moyen: '★★★☆☆',
+    difficile: '★★★★☆',
+  }[String(value).toLowerCase()];
+
+  return fallback || '☆☆☆☆☆';
+}
+
 function projectTemplate(project) {
-  const difficulty = difficultyLabels[project.difficulty] || difficultyLabels.moyen;
-  const status = statusLabels[project.status] || statusLabels.open;
-  const statusClass = project.status === 'full' ? 'tag-status-full' : 'tag-status-open';
-  const difficultyClass = `tag-diff-${difficulty.toLowerCase()}`;
+  const stars = difficultyStars(project.difficulty);
   const accent = Number.isInteger(project.accent) && project.accent >= 1 && project.accent <= 6
     ? project.accent
     : 1;
   const languageTags = project.languages
     .map((language) => `<span class="tag tag-lang">${escapeHtml(language)}</span>`)
     .join('');
+  const owner = project.ownerUsername || project.owner || project.author || 'Anonyme';
+  const count = typeof project.memberCount === 'number'
+    ? project.memberCount
+    : Array.isArray(project.members)
+      ? project.members.length
+      : 0;
 
   return `
     <article class="card project-card reveal">
       <div class="top">
         <h3>${escapeHtml(project.title)}</h3>
-        <span class="tag ${statusClass}">${status}</span>
       </div>
       <p>${escapeHtml(project.description)}</p>
       <div class="tags">
         ${languageTags}
-        <span class="tag ${difficultyClass}">${difficulty}</span>
+        <span class="tag tag-diff-stars">${escapeHtml(stars)}</span>
       </div>
       <div class="meta">
-        <div class="author"><span class="dot accent-${accent}" aria-hidden="true"></span>${escapeHtml(project.author)}</div>
-        <span>${escapeHtml(memberLabel(project.memberCount))}</span>
+        <div class="author"><span class="dot accent-${accent}" aria-hidden="true"></span>${escapeHtml(owner)}</div>
+        <span>${escapeHtml(memberLabel(count))}</span>
       </div>
     </article>
   `;

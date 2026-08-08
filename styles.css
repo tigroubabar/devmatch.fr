@@ -404,10 +404,11 @@ section{ padding: 110px 0 0; }
   letter-spacing:.02em;
 }
 .tag-lang{ background:#eef0ff; color: var(--blurple-dark); }
+.tag-diff-stars{ background:#fff6e0; color:#b8860b; }
 .tag-status-open{ background:#e7f8ee; color: var(--green); }
 .tag-status-full{ background:#fdeeee; color:#c0392b; }
 .tag-diff-facile{ background:#eafaf0; color:#1e8e5a; }
-.tag-diff-moyen{ background:#fff6e0; color:#b8860b; }
+.tag-diff-moyen{ background:#eef2ff; color:#2f4fc0; }
 .tag-diff-difficile{ background:#fdeeee; color:#c0392b; }
 
 /* Projets */
