@@ -2,8 +2,6 @@
 (function () {
   'use strict';
 
-  const DISCORD_INVITE_URL = 'https://discord.gg/9CwjnsuMZ5';
-  const POPUP_STORAGE_KEY = 'devmatch-discord-invite-dismissed';
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function observeReveal(elements) {
@@ -64,44 +62,6 @@
     }
   }
 
-  function rememberPopupDismissal() {
-    try {
-      window.sessionStorage.setItem(POPUP_STORAGE_KEY, 'true');
-    } catch (error) {
-      // Le pop-up reste fonctionnel même si le stockage est indisponible.
-    }
-  }
-
-  function setupDiscordPopup() {
-    if (wasPopupDismissed()) return;
-
-    const popup = document.createElement('aside');
-    popup.className = 'discord-invite-popup';
-    popup.setAttribute('role', 'dialog');
-    popup.setAttribute('aria-label', 'Invitation à rejoindre le serveur Discord DevMatch');
-    popup.innerHTML = `
-      <img src="assets/discord-invite.svg" width="181" height="230" alt="Carte d'invitation au serveur Discord DevMatch">
-      <a class="discord-invite-link" href="${DISCORD_INVITE_URL}" target="_blank" rel="noopener noreferrer" aria-label="Rejoindre le serveur Discord DevMatch dans un nouvel onglet"></a>
-      <button class="discord-invite-close" type="button" aria-label="Fermer l'invitation Discord">×</button>
-    `;
-
-    const closeButton = popup.querySelector('.discord-invite-close');
-    const handleEscape = (event) => {
-      if (event.key === 'Escape' && popup.isConnected) closePopup();
-    };
-    const closePopup = () => {
-      if (popup.classList.contains('is-closing')) return;
-      rememberPopupDismissal();
-      popup.classList.add('is-closing');
-      document.removeEventListener('keydown', handleEscape);
-      window.setTimeout(() => popup.remove(), reduceMotion.matches ? 0 : 200);
-    };
-
-    closeButton.addEventListener('click', closePopup);
-    document.addEventListener('keydown', handleEscape);
-
-    document.body.appendChild(popup);
-  }
 
   function isInternalPageLink(link) {
     if (link.target === '_blank' || link.hasAttribute('download')) return false;
@@ -135,7 +95,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
     observeReveal();
-    setupDiscordPopup();
     setupPageTransitions();
   });
 }());

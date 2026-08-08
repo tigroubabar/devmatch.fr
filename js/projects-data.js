@@ -69,8 +69,8 @@ export const demoProjects = Object.freeze([
   {
     id: 'boussole',
     title: 'Boussole — assistant de revue de code',
-    description: "Bot Discord qui analyse les demandes de fusion avant la revue d'un membre de l'équipe.",
-    languages: ['Python', 'Discord.py'],
+    description: "Assistant de revue de code qui analyse les demandes de fusion avant la validation par un membre de l'équipe.",
+    languages: ['Python'],
     difficulty: '5',
     verified: true,
     owner: 'sofia.dev',

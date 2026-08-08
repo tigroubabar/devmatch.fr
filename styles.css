@@ -338,7 +338,7 @@ section{ padding: 110px 0 0; }
   line-height:1.55;
 }
 
-/* ---------------- Fonctionnement : captures Discord ---------------- */
+/* ---------------- Fonctionnement : captures de fonctionnality ---------------- */
 .steps{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
@@ -357,7 +357,7 @@ section{ padding: 110px 0 0; }
   margin-bottom: 18px;
 }
 
-.discord-capture{
+.feature-capture{
   background: var(--ink);
   border-radius: var(--radius-lg);
   margin-bottom: 18px;
@@ -365,14 +365,14 @@ section{ padding: 110px 0 0; }
   overflow:hidden;
   box-shadow: 0 18px 45px -28px rgba(11,11,16,.65);
 }
-.discord-capture img{
+.feature-capture img{
   width:100%;
   height:100%;
   object-fit:cover;
   object-position:center;
 }
-.discord-capture-phone:nth-child(1) img{ object-position:center 32%; }
-.step-card:nth-child(3) .discord-capture img{ object-position:center 38%; }
+.feature-capture-phone:nth-child(1) img{ object-position:center 32%; }
+.step-card:nth-child(3) .feature-capture img{ object-position:center 38%; }
 
 /* ---------------- Cartes génériques (projets / membres) ---------------- */
 .grid-3{
@@ -620,66 +620,6 @@ section{ padding: 110px 0 0; }
 .reveal{ opacity:0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.in{ opacity:1; transform:none; }
 
-/* ---------------- Invitation Discord globale ---------------- */
-.discord-invite-popup{
-  position:fixed;
-  z-index:1000;
-  right:22px;
-  bottom:22px;
-  width:min(238px, calc(100vw - 32px));
-  aspect-ratio:181 / 230;
-  border-radius:20px;
-  filter:drop-shadow(0 24px 35px rgba(11,11,16,.32));
-  animation:invite-in .34s cubic-bezier(.2,.75,.3,1) both;
-}
-.discord-invite-popup.is-closing{
-  animation:invite-out .2s ease both;
-}
-.discord-invite-popup img{
-  width:100%;
-  height:100%;
-  border-radius:20px;
-}
-.discord-invite-link{
-  position:absolute;
-  left:8.84%;
-  right:8.84%;
-  top:75.65%;
-  height:17.83%;
-  border-radius:10px;
-}
-.discord-invite-link:focus-visible{
-  outline:3px solid #fff;
-  outline-offset:3px;
-  box-shadow:0 0 0 6px rgba(88,101,242,.7);
-}
-.discord-invite-close{
-  position:absolute;
-  z-index:2;
-  top:-11px;
-  right:-11px;
-  width:34px;
-  height:34px;
-  border:2px solid #fff;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  padding:0;
-  background:var(--ink);
-  color:#fff;
-  font-size:1.25rem;
-  line-height:1;
-  box-shadow:0 5px 16px rgba(0,0,0,.32);
-}
-.discord-invite-close:hover{ background:#292934; }
-@keyframes invite-in{
-  from{ opacity:0; transform:translateY(18px) scale(.97); }
-  to{ opacity:1; transform:none; }
-}
-@keyframes invite-out{
-  to{ opacity:0; transform:translateY(12px) scale(.97); }
-}
-
 @media (max-width: 760px){
   .cta-block-character{
     min-height:0;
@@ -697,17 +637,11 @@ section{ padding: 110px 0 0; }
   }
 }
 
-@media (max-width: 480px){
-  .discord-invite-popup{ right:16px; bottom:16px; width:min(220px, calc(100vw - 32px)); }
-}
-
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
   body{ animation:none; transition:none; }
   body.page-leaving{ opacity:1; transform:none; }
   .reveal{ opacity:1; transform:none; transition:none; }
   .btn:hover{ transform:none; }
-  .loading-dot,
-  .discord-invite-popup,
-  .discord-invite-popup.is-closing{ animation:none; }
+  .loading-dot{ animation:none; }
 }
