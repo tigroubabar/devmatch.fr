@@ -4,7 +4,7 @@
 export const demoProjects = Object.freeze([
   {
     id: 'nova',
-    title: "Nova — suivi d'habitudes",
+    title: "Nova — suivi",
     description: "Application mobile de suivi d'habitudes avec rappels et fonctionnement hors ligne.",
     languages: ['Flutter', 'Supabase'],
     difficulty: 'moyen',
