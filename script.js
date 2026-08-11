@@ -29,29 +29,65 @@
   function setupNavigation() {
     const toggle = document.getElementById('navToggle');
     const links = document.getElementById('navLinks');
-    if (!toggle || !links) return;
+    if (!links) return;
 
     const setMenuOpen = (open) => {
+      if (!toggle) return;
       links.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
       toggle.textContent = open ? '×' : '☰';
     };
 
-    toggle.addEventListener('click', () => {
-      setMenuOpen(!links.classList.contains('open'));
-    });
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        setMenuOpen(!links.classList.contains('open'));
+      });
+    }
 
-    links.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => setMenuOpen(false));
-    });
+    const navAnchors = Array.from(links.querySelectorAll('a[href^="#"]'));
+    const sections = navAnchors
+      .map((a) => document.getElementById((a.getAttribute('href') || '').slice(1)))
+      .filter(Boolean);
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && links.classList.contains('open')) {
-        setMenuOpen(false);
-        toggle.focus();
+    function updateActiveLink() {
+      const scrollPos = window.scrollY + 140;
+      let current = null;
+      for (const section of sections) {
+        if (section.offsetTop <= scrollPos) current = section;
       }
+      navAnchors.forEach((a) => a.classList.toggle('active', current && a.getAttribute('href') === `#${current.id}`));
+    }
+
+    navAnchors.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href') || '';
+        if (!href.startsWith('#')) return;
+
+        const id = href.slice(1);
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        e.preventDefault();
+        setMenuOpen(false);
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        navAnchors.forEach((anchor) => anchor.classList.toggle('active', anchor === link));
+        window.setTimeout(() => target.setAttribute('tabindex', '-1') && target.focus(), 400);
+      });
     });
+
+    window.addEventListener('scroll', updateActiveLink, { passive: true });
+    window.addEventListener('resize', updateActiveLink);
+    updateActiveLink();
+
+    if (toggle) {
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && links.classList.contains('open')) {
+          setMenuOpen(false);
+          toggle.focus();
+        }
+      });
+    }
   }
 
   function wasPopupDismissed() {

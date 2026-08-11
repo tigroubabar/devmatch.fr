@@ -1,4 +1,5 @@
 import { getProjects } from './projects-service.js';
+import { discordInvite } from './projects-data.js';
 
 const grid = document.getElementById('projectsGrid');
 const state = document.getElementById('projectsState');
@@ -68,6 +69,9 @@ function projectTemplate(project) {
       <div class="meta">
         <div class="author"><span class="dot accent-${accent}" aria-hidden="true"></span>${escapeHtml(owner)}</div>
         <span>${escapeHtml(memberLabel(count))}</span>
+      </div>
+      <div class="project-cta">
+        <a class="btn btn-primary btn-full" href="${discordInvite}" target="_blank" rel="noopener noreferrer">Rejoindre le projet</a>
       </div>
     </article>
   `;

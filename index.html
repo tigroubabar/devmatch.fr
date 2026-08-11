@@ -1,153 +1,322 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DevMatch — Communauté pour développeurs</title>
-<meta name="description" content="DevMatch est une communauté francophone pour présenter un projet, trouver une équipe et échanger sur le développement.">
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-<header class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="brand">
-      <span class="brand-icon">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" fill="currentColor"/></svg>
-      </span>
-      DevMatch
-    </a>
-    <nav class="nav-links" id="navLinks">
-      <a href="index.html" class="active">Accueil</a>
-      <a href="projets/">Projets</a>
-      <a href="membres/">Membres</a>
-      <a href="communaute/">Communauté</a>
-      <a href="apropos/">À propos</a>
-    </nav>
-    <button class="nav-toggle" id="navToggle" type="button" aria-label="Ouvrir le menu" aria-controls="navLinks" aria-expanded="false">☰</button>
-  </div>
-</header>
-
-<div class="hero-bg">
-  <div class="container hero">
-    <span class="eyebrow"><span class="dot"></span> Communauté active</span>
-    <h1>Une communauté pour les développeurs</h1>
-    <p class="sub">Présente un projet, rejoins une équipe ou demande de l'aide sur un sujet technique.</p>
-    <div class="hero-cta">
-      <a href="projets/" class="btn btn-primary">Explorer les projets</a>
-      <a href="apropos/" class="btn btn-ghost">Voir la présentation</a>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="stats-dock reveal">
-      <div class="stat"><strong>2 252</strong><span>Membres</span></div>
-      <div class="stat"><strong>640+</strong><span>Projets créés</span></div>
-      <div class="stat"><strong>120+</strong><span>Contributions actives</span></div>
-      <div class="stat"><strong>Août 2026</strong><span>Lancement de DevMatch</span></div>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-
-  <section class="mt-lg" id="fonctionnement">
-    <div class="section-head reveal">
-      <span class="kicker">Fonctionnement</span>
-      <h2>Utiliser DevMatch en trois étapes</h2>
-      <p>La plateforme regroupe les projets, les équipes et les échanges techniques dans des espaces dédiés.</p>
-    </div>
-
-    <div class="steps">
-      <article class="step-card reveal">
-        <div class="feature-capture">
-          <img src="assets/fonctionnement-serveur.png" width="497" height="802" loading="lazy" alt="Aperçu d'une fiche de projet avec les informations de suivi et d'équipe.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevMatch</title>
+    <meta
+      name="description"
+      content="DevMatch est une communauté francophone pour présenter un projet, trouver une équipe et échanger sur le développement."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <aside class="nav sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-logo">
+          <a href="#home"><img src="assets/logo.png" alt="DevMatch logo" /></a>
         </div>
-        <h3>1. Découvre la communauté</h3>
-        <p>Parcours les espaces disponibles et découvre les projets en cours.</p>
-      </article>
+      </div>
+      <div class="nav-inner">
+        <a href="#home" class="brand"> DevMatch </a>
+        <nav class="nav-links" id="navLinks">
+          <a href="#home" class="active">Accueil</a>
+          <a href="#projets">Projets</a>
+          <a href="#salons">Salons</a>
+          <a href="#apropos">Communauté</a>
+          <a href="#fonctionnement">Utiliser DevMatch</a>
+        </nav>
+      </div>
+    </aside>
 
-      <article class="step-card reveal">
-        <div class="feature-capture feature-capture-phone">
-          <img src="assets/fonctionnement-projet.jpg" width="1080" height="2400" loading="lazy" alt="Commande de création d'un projet avec le titre, la description et les langages.">
+    <div class="hero-bg">
+      <div id="home" class="container hero">
+        <h1>Un lieu pour les développeurs</h1>
+        <p class="sub">
+          Présente un projet, rejoins une équipe ou demande de l'aide sur un
+          sujet technique.
+        </p>
+        <div class="hero-cta">
+          <a href="#projets" class="btn btn-primary">Explorer les projets</a>
+          <a
+            href="https://discord.gg/DS4gegMMUK"
+            class="btn btn-blurple"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Rejoindre le serveur Discord</a
+          >
+          <a href="#apropos" class="btn btn-ghost">Voir la présentation</a>
         </div>
-        <h3>2. Déclare ou rejoins un projet</h3>
-        <p>La commande indique le titre, la description, les langages et la difficulté.</p>
-      </article>
-
-      <article class="step-card reveal">
-        <div class="feature-capture feature-capture-phone">
-          <img src="assets/fonctionnement-equipe.jpg" width="1080" height="2400" loading="lazy" alt="Échanges techniques entre les membres d'une équipe autour d'un projet.">
-        </div>
-        <h3>3. Échange avec l'équipe</h3>
-        <p>Le suivi du projet centralise les questions, les décisions et l'avancement du travail.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="mt-lg section-tight">
-    <div class="cta-block cta-block-character reveal">
-      <div class="cta-content">
-      <h2>Ton prochain projet commence ici</h2>
-      <p>Publie ton idée avec <code>/create-project</code> ou consulte les projets ouverts.</p>
-      <a href="projets/" class="btn btn-blurple">Explorer les projets</a>
-      </div>
-      <img class="cta-character" src="assets/personnage-devmatch.png" width="1550" height="1015" loading="lazy" alt="Personnage DevMatch accoudé sur le bord du cadre">
-    </div>
-  </section>
-
-</div>
-
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand-col">
-        <div class="footer-brand">
-          <span class="brand-icon">
-            <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" fill="#0b0b10"/></svg>
-          </span>
-          DevMatch
-        </div>
-        <p>Communauté francophone consacrée aux projets et à l'entraide entre développeurs.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Plateforme</h4>
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="projets/">Projets</a></li>
-          <li><a href="membres/">Membres</a></li>
-          <li><a href="communaute/">Communauté</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Fonctionnalités</h4>
-        <ul>
-          <li><a href="projets/">Création de projet</a></li>
-          <li><a href="communaute/">Salons thématiques</a></li>
-          <li><a href="membres/">Profils membres</a></li>
-          <li><a href="apropos/">Feuille de route</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>En savoir plus</h4>
-        <ul>
-          <li><a href="apropos/">Notre histoire</a></li>
-          <li><a href="communaute/">Règles de la communauté</a></li>
-          <li><a href="apropos/">Bonnes pratiques</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Support</h4>
-        <ul>
-          <li><a href="apropos/">Contact</a></li>
-          <li><a href="communaute/">Aide</a></li>
-          <li><a href="#">Mentions légales</a></li>
-        </ul>
       </div>
     </div>
-  </div>
-</footer>
 
-<script src="script.js"></script>
-</body>
+    <!-- Projets section (fusionnée depuis /projets/) -->
+    <div id="projets" class="container">
+      <section class="section-tight">
+        <div class="section-head reveal">
+          <span class="kicker">Liste des projets</span>
+          <h2>Projets actuellement publiés</h2>
+        </div>
+
+        <div
+          id="projectsState"
+          class="projects-state"
+          role="status"
+          aria-live="polite"
+        >
+          <span class="loading-dot" aria-hidden="true"></span>
+          <span>Chargement des projets…</span>
+        </div>
+        <div class="grid-3" id="projectsGrid" aria-live="polite"></div>
+      </section>
+    </div>
+
+    <!-- Membres section (fusionnée depuis /membres/) -->
+
+    <!-- Communauté section (fusionnée depuis /communaute/) -->
+    <div id="salons" class="container">
+      <section class="section-tight">
+        <div class="section-head reveal">
+          <span class="kicker">Salons</span>
+          <h2>Les salons</h2>
+        </div>
+
+        <p class="reveal" style="max-width:720px;color:var(--muted);margin-top:8px;">Rejoins des discussions pour développer des projets en équipe, demander de l'aide ponctuelle ou trouver des personnes motivées pour contribuer à ton idée.</p>
+
+        <div class="channels">
+          <div class="channel reveal">
+            <div class="h">📜</div>
+            <div>
+              <div class="name">présentation</div>
+              <div class="desc">Présentation de DevMatch : objectifs, règles et fonctionnement.</div>
+            </div>
+          </div>
+
+          <div class="channel reveal">
+            <div class="h">📢</div>
+            <div>
+              <div class="name">annonces</div>
+              <div class="desc">Informations importantes et mises à jour de la communauté.</div>
+            </div>
+          </div>
+
+          <div class="channel reveal">
+            <div class="h">💫</div>
+            <div>
+              <div class="name">tuto-commandes</div>
+              <div class="desc">Guides et commandes pour utiliser le serveur et les outils.</div>
+            </div>
+          </div>
+
+          <div class="channel reveal">
+            <div class="h">💬</div>
+            <div>
+              <div class="name">général</div>
+              <div class="desc">Discussions quotidiennes et recherche d'aides pour tes tâches.</div>
+            </div>
+          </div>
+
+          <div class="channel reveal">
+            <div class="h">🤖</div>
+            <div>
+              <div class="name">commandes-bot</div>
+              <div class="desc">Tester et interagir avec les commandes du bot.</div>
+            </div>
+          </div>
+
+          <div class="channel reveal">
+            <div class="h">🔊</div>
+            <div>
+              <div class="name">général (vocal)</div>
+              <div class="desc">Espaces vocaux pour pair-programming, réunions et sessions d'entraide.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- À propos section (fusionnée depuis /apropos/) -->
+    <div id="apropos" class="container">
+      <section class="section-tight">
+        <div class="section-head reveal">
+          <span class="kicker">Objectifs</span>
+          <h2>À quoi sert la communauté</h2>
+        </div>
+        <div class="value-list">
+          <div class="value reveal">
+            <span class="num">01</span>
+            <div>
+              <h3>Échanger sur le code</h3>
+              <p>
+                Les salons d'entraide permettent de présenter un problème
+                technique et de demander un avis.
+              </p>
+            </div>
+          </div>
+          <div class="value reveal">
+            <span class="num">02</span>
+            <div>
+              <h3>Suivre les projets</h3>
+              <p>
+                Chaque projet dispose d'un espace pour regrouper les membres,
+                les décisions et l'avancement.
+              </p>
+            </div>
+          </div>
+          <div class="value reveal">
+            <span class="num">03</span>
+            <div>
+              <h3>Développer par la pratique</h3>
+              <p>
+                Les membres peuvent contribuer à un projet réel et travailler
+                avec les contraintes définies par son équipe.
+              </p>
+            </div>
+          </div>
+          <div class="value reveal">
+            <span class="num">04</span>
+            <div>
+              <h3>Indiquer le niveau attendu</h3>
+              <p>
+                Chaque fiche de projet précise une difficulté pour aider les
+                membres à choisir une contribution adaptée.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="container">
+      <section class="mt-lg" id="fonctionnement">
+        <div class="section-head reveal">
+          <span class="kicker">Fonctionnement</span>
+          <h2>Utiliser DevMatch en trois étapes</h2>
+        </div>
+
+        <div class="steps">
+          <article class="step-card reveal">
+            <div class="feature-capture">
+              <img
+                src="assets/fonctionnement-serveur.png"
+                width="497"
+                height="802"
+                loading="lazy"
+                alt="Aperçu d'une fiche de projet avec les informations de suivi et d'équipe."
+              />
+            </div>
+            <h3>1. Découvre la communauté</h3>
+          </article>
+
+          <article class="step-card reveal">
+            <div class="feature-capture feature-capture-phone">
+              <img
+                src="assets/fonctionnement-projet.jpg"
+                width="1080"
+                height="2400"
+                loading="lazy"
+                alt="Commande de création d'un projet avec le titre, la description et les langages."
+              />
+            </div>
+            <h3>2. Déclare ou rejoins un projet</h3>
+          </article>
+
+          <article class="step-card reveal">
+            <div class="feature-capture feature-capture-phone">
+              <img
+                src="assets/fonctionnement-equipe.jpg"
+                width="1080"
+                height="2400"
+                loading="lazy"
+                alt="Échanges techniques entre les membres d'une équipe autour d'un projet."
+              />
+            </div>
+            <h3>3. Échange avec l'équipe</h3>
+          </article>
+        </div>
+      </section>
+
+      <section class="mt-lg section-tight">
+        <div class="cta-block cta-block-character reveal">
+          <div class="cta-content">
+            <h2>Ton prochain projet commence ici</h2>
+            <p>
+              Publie ton idée avec <code>/create-project</code> ou consulte les
+              projets ouverts.
+            </p>
+            <a href="#projets" class="btn btn-blurple">Explorer les projets</a>
+          </div>
+          <img
+            class="cta-character"
+            src="assets/personnage-devmatch.png"
+            width="1550"
+            height="1015"
+            loading="lazy"
+            alt="Personnage DevMatch accoudé sur le bord du cadre"
+          />
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand-col">
+            <div class="footer-brand">
+              <span class="brand-icon">
+                <svg viewBox="0 0 24 24" fill="none" width="20" height="20">
+                  <path
+                    d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"
+                    fill="#0b0b10"
+                  />
+                </svg>
+              </span>
+              DevMatch
+            </div>
+            <p>
+              Communauté francophone consacrée aux projets et à l'entraide entre
+              développeurs.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Plateforme</h4>
+            <ul>
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="#projets">Projets</a></li>
+              <li><a href="#membres">Membres</a></li>
+              <li><a href="#communaute">Communauté</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Fonctionnalités</h4>
+            <ul>
+              <li><a href="#projets">Création de projet</a></li>
+              <li><a href="#communaute">Salons thématiques</a></li>
+              <li><a href="#membres">Profils membres</a></li>
+              <li><a href="#apropos">Feuille de route</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>En savoir plus</h4>
+            <ul>
+              <li><a href="#apropos">Notre histoire</a></li>
+              <li><a href="#communaute">Règles de la communauté</a></li>
+              <li><a href="#apropos">Bonnes pratiques</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#apropos">Contact</a></li>
+              <li><a href="#communaute">Aide</a></li>
+              <li><a href="#">Mentions légales</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="module" src="js/projects-page.js"></script>
+  </body>
 </html>
