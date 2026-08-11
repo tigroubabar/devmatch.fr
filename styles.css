@@ -72,6 +72,16 @@ button {
   padding: 28px 20px;
   z-index: 1000;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#sidebar .sidebar-top {
+  margin-bottom: 32px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 #sidebar .nav-inner {
@@ -79,8 +89,9 @@ button {
   flex-direction: column;
   gap: 26px;
   justify-content: center;
-  flex: 1;
-  min-height: calc(100vh - 56px);
+  align-items: center;
+  width: 100%;
+  max-width: 220px;
 }
 
 #sidebar .sidebar-top {
@@ -91,7 +102,7 @@ button {
 }
 
 #sidebar .sidebar-logo img {
-  width: 110px;
+  width: 80px;
   height: auto;
   display: block;
 }
