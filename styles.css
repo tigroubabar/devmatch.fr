@@ -1,16 +1,16 @@
 ﻿:root {
-  color-scheme: light;
-  --bg: #f6f4ef;
-  --surface: #ffffff;
-  --surface-soft: #f0ede8;
-  --surface-strong: #e5e1da;
-  --ink: #111113;
-  --ink-soft: #4e525b;
-  --muted: #6b707a;
-  --accent: #3f5da8;
-  --accent-soft: #7a90d3;
-  --border: #d8d4cc;
-  --shadow: 0 18px 45px rgba(24, 28, 48, 0.08);
+  color-scheme: dark;
+  --bg: #0f1419;
+  --surface: #1a1f2e;
+  --surface-soft: #242d3d;
+  --surface-strong: #2d3748;
+  --ink: #e8eaed;
+  --ink-soft: #a8aeb7;
+  --muted: #7a8090;
+  --accent: #5a8dd4;
+  --accent-soft: #7a9fe0;
+  --border: #2d3748;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
   --radius: 24px;
   --radius-sm: 14px;
   --max-width: 1140px;
@@ -29,8 +29,8 @@ body {
   margin: 0;
   min-height: 100vh;
   color: var(--ink);
-  background: radial-gradient(circle at top left, rgba(63, 93, 168, 0.1), transparent 45%),
-    linear-gradient(180deg, #fbfaf7 0%, #f6f4ef 100%);
+  background: radial-gradient(circle at top left, rgba(90, 141, 212, 0.08), transparent 45%),
+    linear-gradient(180deg, #1a1f2e 0%, #0f1419 100%);
 }
 
 img,
@@ -56,7 +56,7 @@ button {
 }
 
 ::selection {
-  background: rgba(63, 93, 168, 0.18);
+  background: rgba(90, 141, 212, 0.3);
 }
 
 #sidebar {
@@ -65,9 +65,9 @@ button {
   left: 0;
   width: 240px;
   height: 100vh;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(26, 31, 46, 0.95);
   border-right: 1px solid var(--border);
-  box-shadow: 10px 0 40px rgba(24, 28, 48, 0.08);
+  box-shadow: 10px 0 40px rgba(0, 0, 0, 0.3);
   overflow-y: auto;
   padding: 28px 20px;
   z-index: 1000;
@@ -105,6 +105,7 @@ button {
   width: 80px;
   height: auto;
   display: block;
+  border-radius: 10px;
 }
 
 #sidebar .brand {
@@ -139,7 +140,7 @@ button {
 
 #sidebar .nav-links a:hover,
 #sidebar .nav-links a.active {
-  background: rgba(63, 93, 168, 0.13);
+  background: rgba(90, 141, 212, 0.2);
   color: var(--accent);
 }
 
@@ -175,8 +176,8 @@ button {
   display: flex;
   align-items: center;
   padding-top: 0;
-  background: linear-gradient(130deg, rgba(63, 93, 168, 0.18), transparent 52%),
-    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.7), transparent 25%);
+  background: linear-gradient(130deg, rgba(90, 141, 212, 0.1), transparent 52%),
+    radial-gradient(circle at 20% 20%, rgba(42, 51, 69, 0.5), transparent 25%);
 }
 
 .hero {
@@ -219,19 +220,19 @@ button {
 .btn-primary {
   background: var(--accent);
   color: #fff;
-  box-shadow: 0 16px 35px rgba(63, 93, 168, 0.14);
+  box-shadow: 0 16px 35px rgba(90, 141, 212, 0.2);
 }
 
 .btn-ghost {
   background: var(--accent);
   color: #fff;
-  box-shadow: 0 16px 35px rgba(63, 93, 168, 0.14);
+  box-shadow: 0 16px 35px rgba(90, 141, 212, 0.2);
 }
 
 .btn-blurple {
   background: var(--accent);
   color: #fff;
-  box-shadow: 0 16px 35px rgba(63, 93, 168, 0.14);
+  box-shadow: 0 16px 35px rgba(90, 141, 212, 0.2);
 }
 
 .section-tight {
@@ -319,13 +320,13 @@ button {
 }
 
 .tag-lang {
-  background: #eef2ff;
-  color: #3f5da8;
+  background: rgba(90, 141, 212, 0.2);
+  color: #7a9fe0;
 }
 
 .tag-diff-stars {
-  background: #fff5d7;
-  color: #b68d1d;
+  background: rgba(180, 120, 20, 0.2);
+  color: #d4a83f;
 }
 
 .project-card .meta {
@@ -412,8 +413,8 @@ button {
   width: 38px;
   height: 38px;
   border-radius: 14px;
-  background: #eef2ff;
-  color: var(--accent);
+  background: rgba(90, 141, 212, 0.2);
+  color: #7a9fe0;
   display: grid;
   place-items: center;
   font-weight: 700;
@@ -464,7 +465,7 @@ button {
 }
 
 .cta-block {
-  background: linear-gradient(135deg, rgba(63, 93, 168, 0.95), rgba(83, 111, 182, 0.95));
+  background: linear-gradient(135deg, rgba(90, 141, 212, 0.25), rgba(75, 110, 170, 0.25));
   border-radius: 28px;
   color: #fff;
   padding: 42px 40px;
@@ -498,7 +499,7 @@ button {
 
 .footer {
   padding: 80px 0 60px;
-  background: #f5f2eb;
+  background: #1a1f2e;
 }
 
 .footer-grid {
@@ -533,7 +534,7 @@ button {
 }
 .discord-fab:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(24, 28, 48, 0.18);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
 }
 .discord-fab img {
   width: 100%;
