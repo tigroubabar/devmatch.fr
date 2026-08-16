@@ -55,6 +55,9 @@ function projectTemplate(project) {
     : Array.isArray(project.members)
       ? project.members.length
       : 0;
+  const openSourceBadge = project.openSource
+    ? '<span class="tag tag-open-source">🔓 Open Source</span>'
+    : '<span class="tag tag-open-source">🔒 Propriétaire</span>';
 
   return `
     <article class="card project-card reveal">
@@ -65,6 +68,7 @@ function projectTemplate(project) {
       <div class="tags">
         ${languageTags}
         <span class="tag tag-diff-stars">${escapeHtml(stars)}</span>
+        ${openSourceBadge}
       </div>
       <div class="meta">
         <div class="author"><span class="dot accent-${accent}" aria-hidden="true"></span>${escapeHtml(owner)}</div>

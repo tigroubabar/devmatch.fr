@@ -5,6 +5,7 @@
  * @property {string} description Résumé affiché dans la liste.
  * @property {string} difficulty Valeur textuelle de difficulté, de "1" à "5".
  * @property {boolean} verified Indique si le projet est vérifié.
+ * @property {boolean} [openSource] Indique si le projet est open source.
  * @property {string} owner Nom public du créateur.
  * @property {string} [ownerUsername] Pseudo ou nom à afficher (si disponible, chargé depuis la colonne `owner_username`).
  * @property {string[]} members Liste des membres de l'équipe.

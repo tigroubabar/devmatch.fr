@@ -324,6 +324,11 @@ button {
   color: #7a9fe0;
 }
 
+.tag-open-source {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+
 .tag-diff-stars {
   background: rgba(180, 120, 20, 0.2);
   color: #d4a83f;

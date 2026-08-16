@@ -13,7 +13,7 @@ import { demoProjects, supabase_url, supabase_key } from './projects-data.js';
 export async function getProjects() {
   try {
     const response = await fetch(
-      `${supabase_url}/rest/v1/projects?select=id,title,description,languages,owner,owner_username,members,difficulty,verified&verified=eq.true`,
+      `${supabase_url}/rest/v1/projects?select=id,title,description,languages,owner,owner_username,members,difficulty,verified,open-source&verified=eq.true`,
       {
         headers: {
           apikey: supabase_key,
@@ -40,6 +40,7 @@ export async function getProjects() {
       const accent = ((String(project.id || project.owner)
         .split('')
         .reduce((sum, character) => sum + character.charCodeAt(0), 0) % 6) + 1);
+      const openSource = project['open-source'] === 'true' || project['open-source'] === true;
 
       return {
         ...project,
@@ -48,6 +49,7 @@ export async function getProjects() {
         members,
         memberCount: members.length,
         accent,
+        openSource,
       };
     });
   } catch (error) {
@@ -59,6 +61,7 @@ export async function getProjects() {
       members: Array.isArray(project.members) ? [...project.members] : [],
       memberCount: Array.isArray(project.members) ? project.members.length : 0,
       accent: project.accent || 1,
+      openSource: project.openSource || false,
     }));
   }
 }
