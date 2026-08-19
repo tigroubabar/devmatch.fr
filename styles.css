@@ -596,6 +596,10 @@ button {
   transform: none;
 }
 
+.ad-space {
+  margin-left: 250px;
+}
+
 @media (max-width: 1030px) {
   #sidebar {
     width: 220px;
