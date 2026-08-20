@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { DISCORD_INVITE } from './data/projects.js';
 import { getProjects } from './data/projectsService.js';
 import { useEditorialMotion } from './hooks/useEditorialMotion.js';
-import { useVantaBirds } from './hooks/useVantaBirds.js';
+import { useVantaClouds } from './hooks/useVantaClouds.js';
+import { Gradient } from './Gradient.js';
 import SplitText from './react-bits/SplitText/SplitText.jsx';
 import Magnet from './react-bits/Magnet/Magnet.jsx';
 import SpotlightCard from './react-bits/SpotlightCard/SpotlightCard.jsx';
@@ -104,7 +105,7 @@ function ProjectCard({ project, index }) {
   const count = typeof project.memberCount === 'number' ? project.memberCount : project.members?.length || 0;
 
   return (
-    <SpotlightCard className="dmx-project-shell" spotlightColor="rgba(49, 85, 217, 0.1)">
+    <SpotlightCard className="dmx-project-shell" spotlightColor="rgba(131, 191, 253, 0.18)">
       <article className="dmx-project" data-accent={project.accent || 1}>
         <p className="dmx-project__index">Projet {String(index + 1).padStart(2, '0')}</p>
         <h3>{project.title}</h3>
@@ -222,7 +223,13 @@ function App() {
   const heroVantaRef = useRef(null);
   const [activeSection, setActiveSection] = useState('home');
   const { scrollToAnchor, focusSection } = useEditorialMotion(rootRef);
-  useVantaBirds(heroVantaRef);
+  useVantaClouds(heroVantaRef);
+
+  useEffect(() => {
+    const gradient = new Gradient();
+    gradient.initGradient('#gradient-canvas');
+    return () => gradient.destroy();
+  }, []);
 
   useEffect(() => {
     let frameId = 0;
@@ -265,6 +272,7 @@ function App() {
 
   return (
     <div className="dmx-site" ref={rootRef}>
+      <canvas id="gradient-canvas" data-transition-in aria-hidden="true" />
       <a className="dmx-skip" href="#projets" onClick={handleAnchor}>Aller au contenu</a>
 
       <header className="dmx-topbar">

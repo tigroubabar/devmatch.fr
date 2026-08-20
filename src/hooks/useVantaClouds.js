@@ -11,7 +11,7 @@ function canCreateWebGlContext() {
   }
 }
 
-export function useVantaBirds(containerRef) {
+export function useVantaClouds(containerRef) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return undefined;
@@ -52,9 +52,9 @@ export function useVantaBirds(containerRef) {
       container.dataset.vantaState = 'loading';
 
       try {
-        const [threeModule, birdsModule] = await Promise.all([
+        const [threeModule, cloudsModule] = await Promise.all([
           import('three'),
-          import('vanta/dist/vanta.birds.min.js'),
+          import('vanta/dist/vanta.clouds.min.js'),
         ]);
 
         if (
@@ -64,37 +64,29 @@ export function useVantaBirds(containerRef) {
           || effect
         ) return;
 
-        const Birds = window.VANTA?.BIRDS || birdsModule.default || birdsModule;
+        const Clouds = window.VANTA?.CLOUDS || cloudsModule.default || cloudsModule;
         const THREE = threeModule.default || threeModule;
-        if (typeof Birds !== 'function') {
-          throw new TypeError('Vanta Birds factory is unavailable');
+        if (typeof Clouds !== 'function') {
+          throw new TypeError('Vanta Clouds factory is unavailable');
         }
-        effect = Birds({
+
+        effect = Clouds({
           el: container,
           THREE,
           mouseControls: true,
-          touchControls: false,
+          touchControls: true,
           gyroControls: false,
           minHeight: 200,
           minWidth: 200,
-          scale: 1,
-          scaleMobile: 1,
-          backgroundColor: 0xf5f6f2,
-          color1: 0x101828,
-          color2: 0x3155d9,
-          colorMode: 'variance',
-          birdSize: 0.65,
-          wingSpan: 18,
-          speedLimit: 1.4,
-          separation: 58,
-          alignment: 46,
-          cohesion: 34,
-          quantity: 2,
+          skyColor: 0x010101,
+          cloudColor: 0xa0a1a4,
+          cloudShadowColor: 0x6f7274,
+          speed: 0.90,
         });
         container.dataset.vantaState = 'active';
       } catch (error) {
         container.dataset.vantaState = 'fallback';
-        console.warn('Le fond Vanta Birds reste en mode statique.', error);
+        console.warn('Le fond Vanta Clouds reste en mode statique.', error);
       }
     };
 
