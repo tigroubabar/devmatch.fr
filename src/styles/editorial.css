@@ -302,7 +302,7 @@ code {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1rem;
   min-height: 3rem;
   border-left: 2px solid transparent;
@@ -318,21 +318,10 @@ code {
     transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.dmx-sidebar__nav a > span:last-child {
-  color: var(--dmx-muted-soft);
-  font-size: 0.62rem;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.08em;
-}
-
 .dmx-sidebar__nav a[aria-current='location'] {
   color: var(--dmx-ink);
   border-left-color: var(--dmx-blue);
   background: rgb(131 191 253 / 9%);
-}
-
-.dmx-sidebar__nav a[aria-current='location'] > span:last-child {
-  color: var(--dmx-blue);
 }
 
 .dmx-sidebar__discord {

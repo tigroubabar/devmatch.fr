@@ -419,7 +419,6 @@ function App() {
               aria-current={activeSection === id ? 'location' : undefined}
             >
               <span>{label}</span>
-              <span aria-hidden="true">{String(NAV_ITEMS.findIndex(([itemId]) => itemId === id) + 1).padStart(2, '0')}</span>
             </a>
           ))}
         </nav>
