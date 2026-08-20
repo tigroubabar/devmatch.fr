@@ -1,0 +1,36 @@
+/* React Bits JS-CSS source variant with DevMatch's restrained surface tokens. */
+/* Provenance: https://github.com/DavidHDev/react-bits/tree/main/src/content/Components/SpotlightCard */
+.card-spotlight {
+  position: relative;
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight-color: rgb(49 85 217 / 8%);
+}
+
+.card-spotlight::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 76%);
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease-out;
+}
+
+.card-spotlight:hover::before,
+.card-spotlight:focus-within::before {
+  opacity: 0.42;
+}
+
+.card-spotlight > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .card-spotlight::before {
+    display: none;
+  }
+}

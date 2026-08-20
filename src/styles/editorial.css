@@ -304,6 +304,12 @@ code {
   transition: color 130ms ease-out, transform 130ms ease-out;
 }
 
+.dmx-magnet,
+.dmx-magnet__inner {
+  width: 100%;
+  height: 100%;
+}
+
 .dmx-action:hover {
   color: var(--dmx-cobalt);
 }
@@ -387,15 +393,20 @@ code {
   to { opacity: 0.25; }
 }
 
-.dmx-project {
-  display: grid;
-  gap: 1.25rem;
+.dmx-project-shell {
   min-height: 23rem;
   border-right: 1px solid var(--dmx-line-strong);
   border-bottom: 1px solid var(--dmx-line-strong);
   border-left: 1px solid var(--dmx-line-strong);
-  padding: 1.35rem;
   background: var(--dmx-surface);
+}
+
+.dmx-project {
+  display: grid;
+  gap: 1.25rem;
+  min-height: inherit;
+  padding: 1.35rem;
+  background: transparent;
 }
 
 .dmx-project__index {
@@ -766,7 +777,7 @@ code {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .dmx-project {
+  .dmx-project-shell {
     min-height: 25rem;
   }
 

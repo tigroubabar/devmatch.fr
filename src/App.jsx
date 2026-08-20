@@ -3,6 +3,15 @@ import { DISCORD_INVITE } from './data/projects.js';
 import { getProjects } from './data/projectsService.js';
 import { useEditorialMotion } from './hooks/useEditorialMotion.js';
 import { useVantaBirds } from './hooks/useVantaBirds.js';
+import SplitText from './react-bits/SplitText/SplitText.jsx';
+import Magnet from './react-bits/Magnet/Magnet.jsx';
+import SpotlightCard from './react-bits/SpotlightCard/SpotlightCard.jsx';
+import logoSource from '../assets/logo.png';
+import discordSource from '../assets/discord.jpg';
+import serverStepSource from '../assets/fonctionnement-serveur.png';
+import projectStepSource from '../assets/fonctionnement-projet.jpg';
+import teamStepSource from '../assets/fonctionnement-equipe.jpg';
+import characterSource from '../assets/personnage-devmatch.png';
 
 const NAV_ITEMS = [
   ['home', 'Accueil'],
@@ -31,21 +40,21 @@ const VALUES = [
 
 const STEPS = [
   {
-    image: '/assets/fonctionnement-serveur.png',
+    image: serverStepSource,
     width: 497,
     height: 802,
     alt: "Aperçu d'une fiche de projet avec les informations de suivi et d'équipe.",
     title: '1. Découvre la communauté',
   },
   {
-    image: '/assets/fonctionnement-projet.jpg',
+    image: projectStepSource,
     width: 1080,
     height: 2400,
     alt: "Commande de création d'un projet avec le titre, la description et les langages.",
     title: '2. Déclare ou rejoins un projet',
   },
   {
-    image: '/assets/fonctionnement-equipe.jpg',
+    image: teamStepSource,
     width: 1080,
     height: 2400,
     alt: "Échanges techniques entre les membres d'une équipe autour d'un projet.",
@@ -66,10 +75,19 @@ function SectionHeading({ eyebrow, children, titleId }) {
 
 function EditorialLink({ className = '', children, ...props }) {
   return (
-    <a className={`dmx-action ${className}`.trim()} {...props}>
-      <span>{children}</span>
-      <span aria-hidden="true">↗</span>
-    </a>
+    <Magnet
+      padding={8}
+      magnetStrength={14}
+      activeTransition="transform 120ms ease-out"
+      inactiveTransition="transform 150ms ease-out"
+      wrapperClassName="dmx-magnet"
+      innerClassName="dmx-magnet__inner"
+    >
+      <a className={`dmx-action ${className}`.trim()} {...props}>
+        <span>{children}</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </Magnet>
   );
 }
 
@@ -86,27 +104,29 @@ function ProjectCard({ project, index }) {
   const count = typeof project.memberCount === 'number' ? project.memberCount : project.members?.length || 0;
 
   return (
-    <article className="dmx-project" data-accent={project.accent || 1}>
-      <p className="dmx-project__index">Projet {String(index + 1).padStart(2, '0')}</p>
-      <h3>{project.title}</h3>
-      <p className="dmx-project__summary">{project.description}</p>
-      <div className="dmx-project__labels" aria-label="Technologies et caractéristiques">
-        {project.languages.map((language) => (
-          <span key={language}>{language}</span>
-        ))}
-        <span aria-label={`Difficulté ${project.difficulty} sur 5`}>{difficultyStars(project.difficulty)}</span>
-        <span>{project.openSource ? '🔓 Open Source' : '🔒 Propriétaire'}</span>
-      </div>
-      <footer className="dmx-project__footer">
-        <div>
-          <strong>{owner}</strong>
-          <span>{count} {count > 1 ? 'membres' : 'membre'}</span>
+    <SpotlightCard className="dmx-project-shell" spotlightColor="rgba(49, 85, 217, 0.1)">
+      <article className="dmx-project" data-accent={project.accent || 1}>
+        <p className="dmx-project__index">Projet {String(index + 1).padStart(2, '0')}</p>
+        <h3>{project.title}</h3>
+        <p className="dmx-project__summary">{project.description}</p>
+        <div className="dmx-project__labels" aria-label="Technologies et caractéristiques">
+          {project.languages.map((language) => (
+            <span key={language}>{language}</span>
+          ))}
+          <span aria-label={`Difficulté ${project.difficulty} sur 5`}>{difficultyStars(project.difficulty)}</span>
+          <span>{project.openSource ? '🔓 Open Source' : '🔒 Propriétaire'}</span>
         </div>
-        <EditorialLink href={DISCORD_INVITE} target="_blank" rel="noopener noreferrer">
-          Rejoindre le projet
-        </EditorialLink>
-      </footer>
-    </article>
+        <footer className="dmx-project__footer">
+          <div>
+            <strong>{owner}</strong>
+            <span>{count} {count > 1 ? 'membres' : 'membre'}</span>
+          </div>
+          <EditorialLink href={DISCORD_INVITE} target="_blank" rel="noopener noreferrer">
+            Rejoindre le projet
+          </EditorialLink>
+        </footer>
+      </article>
+    </SpotlightCard>
   );
 }
 
@@ -209,9 +229,10 @@ function App() {
     const updateActive = () => {
       frameId = 0;
       let current = 'home';
+      const activationLine = Math.min(360, window.innerHeight * 0.38);
       NAV_ITEMS.forEach(([id]) => {
         const section = document.getElementById(id);
-        if (section && section.getBoundingClientRect().top <= 150) current = id;
+        if (section && section.getBoundingClientRect().top <= activationLine) current = id;
       });
       setActiveSection(current);
     };
@@ -249,7 +270,7 @@ function App() {
       <header className="dmx-topbar">
         <div className="dmx-topbar__row">
           <a className="dmx-wordmark" href="#home" onClick={handleAnchor} aria-label="DevMatch — accueil">
-            <img src="/assets/logo.png" width="48" height="48" alt="Logo DevMatch" />
+            <img src={logoSource} width="48" height="48" alt="Logo DevMatch" />
             <span>DevMatch</span>
           </a>
           <a className="dmx-topbar__discord" href={DISCORD_INVITE} target="_blank" rel="noopener noreferrer">
@@ -277,7 +298,21 @@ function App() {
           <div className="dmx-wrap dmx-hero__layout">
             <p className="dmx-hero__label" data-dmx-reveal>Communauté francophone · Développement collectif</p>
             <div className="dmx-hero__statement">
-              <h1 id="dmx-hero-title">Un lieu pour les développeurs</h1>
+              <SplitText
+                text="Un lieu pour les développeurs"
+                id="dmx-hero-title"
+                tag="h1"
+                className="dmx-hero__title"
+                delay={18}
+                duration={0.58}
+                ease="power3.out"
+                splitType="words"
+                from={{ opacity: 0, y: 8 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0}
+                rootMargin="0px"
+                textAlign="left"
+              />
               <p>Présente un projet, rejoins une équipe ou demande de l'aide sur un sujet technique.</p>
             </div>
             <div className="dmx-hero__actions" data-dmx-reveal>
@@ -362,7 +397,7 @@ function App() {
             </div>
             <img
               className="dmx-join__character"
-              src="/assets/personnage-devmatch.png"
+              src={characterSource}
               width="1550"
               height="1015"
               loading="lazy"
@@ -389,7 +424,7 @@ function App() {
       </main>
 
       <a className="dmx-discord-float" href={DISCORD_INVITE} target="_blank" rel="noopener noreferrer" aria-label="Rejoindre le serveur Discord DevMatch">
-        <img src="/assets/discord.jpg" width="64" height="64" alt="Icône du serveur Discord DevMatch" />
+        <img src={discordSource} width="64" height="64" alt="Icône du serveur Discord DevMatch" />
         <span>Rejoindre Discord</span>
       </a>
     </div>

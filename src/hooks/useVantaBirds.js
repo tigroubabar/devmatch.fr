@@ -64,8 +64,11 @@ export function useVantaBirds(containerRef) {
           || effect
         ) return;
 
-        const Birds = birdsModule.default || birdsModule;
+        const Birds = window.VANTA?.BIRDS || birdsModule.default || birdsModule;
         const THREE = threeModule.default || threeModule;
+        if (typeof Birds !== 'function') {
+          throw new TypeError('Vanta Birds factory is unavailable');
+        }
         effect = Birds({
           el: container,
           THREE,
@@ -86,7 +89,7 @@ export function useVantaBirds(containerRef) {
           separation: 58,
           alignment: 46,
           cohesion: 34,
-          quantity: 1.35,
+          quantity: 2,
         });
         container.dataset.vantaState = 'active';
       } catch (error) {
