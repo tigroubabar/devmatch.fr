@@ -197,6 +197,37 @@ code {
   border-bottom: 1px solid var(--dmx-line);
 }
 
+.dmx-hero__vanta {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  background-color: var(--dmx-canvas);
+  pointer-events: none;
+}
+
+.dmx-hero__vanta::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--dmx-line);
+  content: '';
+}
+
+.dmx-hero__vanta canvas {
+  display: block;
+}
+
+.dmx-hero__vanta[data-vanta-state='active'] {
+  background-color: transparent;
+}
+
+.dmx-hero__vanta[data-vanta-state='active']::after {
+  display: none;
+}
+
 .dmx-hero__rule {
   position: absolute;
   top: -8%;

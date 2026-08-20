@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { DISCORD_INVITE } from './data/projects.js';
 import { getProjects } from './data/projectsService.js';
 import { useEditorialMotion } from './hooks/useEditorialMotion.js';
+import { useVantaBirds } from './hooks/useVantaBirds.js';
 
 const NAV_ITEMS = [
   ['home', 'Accueil'],
@@ -198,8 +199,10 @@ function TrafficTradeSlot() {
 
 function App() {
   const rootRef = useRef(null);
+  const heroVantaRef = useRef(null);
   const [activeSection, setActiveSection] = useState('home');
   const { scrollToAnchor, focusSection } = useEditorialMotion(rootRef);
+  useVantaBirds(heroVantaRef);
 
   useEffect(() => {
     let frameId = 0;
@@ -269,6 +272,7 @@ function App() {
 
       <main>
         <section className="dmx-hero" id="home" aria-labelledby="dmx-hero-title">
+          <div className="dmx-hero__vanta" ref={heroVantaRef} aria-hidden="true" />
           <div className="dmx-hero__rule" data-dmx-parallax aria-hidden="true" />
           <div className="dmx-wrap dmx-hero__layout">
             <p className="dmx-hero__label" data-dmx-reveal>Communauté francophone · Développement collectif</p>
