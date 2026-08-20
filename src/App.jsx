@@ -8,7 +8,6 @@ import SplitText from './react-bits/SplitText/SplitText.jsx';
 import Magnet from './react-bits/Magnet/Magnet.jsx';
 import SpotlightCard from './react-bits/SpotlightCard/SpotlightCard.jsx';
 import logoSource from '../assets/logo.png';
-import discordSource from '../assets/discord.jpg';
 import serverStepSource from '../assets/fonctionnement-serveur.png';
 import projectStepSource from '../assets/fonctionnement-projet.jpg';
 import teamStepSource from '../assets/fonctionnement-equipe.jpg';
@@ -221,7 +220,14 @@ function TrafficTradeSlot() {
 function App() {
   const rootRef = useRef(null);
   const heroVantaRef = useRef(null);
+  const menuButtonRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const restoreMenuFocusRef = useRef(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [navigationOpen, setNavigationOpen] = useState(false);
+  const [desktopNavigation, setDesktopNavigation] = useState(() => (
+    typeof window !== 'undefined' && window.matchMedia('(min-width: 64rem)').matches
+  ));
   const { scrollToAnchor, focusSection } = useEditorialMotion(rootRef);
   useVantaClouds(heroVantaRef);
 
@@ -230,6 +236,68 @@ function App() {
     gradient.initGradient('#gradient-canvas');
     return () => gradient.destroy();
   }, []);
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia('(min-width: 64rem)');
+    const handleBreakpoint = (event) => {
+      restoreMenuFocusRef.current = false;
+      setDesktopNavigation(event.matches);
+      setNavigationOpen(false);
+    };
+
+    setDesktopNavigation(desktopQuery.matches);
+    desktopQuery.addEventListener('change', handleBreakpoint);
+    return () => desktopQuery.removeEventListener('change', handleBreakpoint);
+  }, []);
+
+  useEffect(() => {
+    if (!navigationOpen || desktopNavigation) return undefined;
+
+    document.body.dataset.dmxNavigationOpen = 'true';
+    const focusTimer = window.setTimeout(() => closeButtonRef.current?.focus(), 40);
+
+    const handleDrawerKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        restoreMenuFocusRef.current = true;
+        setNavigationOpen(false);
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+      const drawer = closeButtonRef.current?.closest('.dmx-sidebar');
+      const focusable = drawer
+        ? [...drawer.querySelectorAll('a[href], button:not([disabled])')]
+        : [];
+      if (!focusable.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleDrawerKeyDown);
+    return () => {
+      window.clearTimeout(focusTimer);
+      document.removeEventListener('keydown', handleDrawerKeyDown);
+      delete document.body.dataset.dmxNavigationOpen;
+    };
+  }, [desktopNavigation, navigationOpen]);
+
+  useEffect(() => {
+    if (navigationOpen || desktopNavigation || !restoreMenuFocusRef.current) return undefined;
+    const focusTimer = window.setTimeout(() => {
+      menuButtonRef.current?.focus();
+      restoreMenuFocusRef.current = false;
+    }, 60);
+    return () => window.clearTimeout(focusTimer);
+  }, [desktopNavigation, navigationOpen]);
 
   useEffect(() => {
     let frameId = 0;
@@ -267,7 +335,22 @@ function App() {
     event.preventDefault();
     window.history.replaceState(null, '', href);
     setActiveSection(target.id);
-    scrollToAnchor(target, () => focusSection(target));
+    const moveToTarget = () => {
+      focusSection(target);
+      scrollToAnchor(target);
+    };
+    if (!desktopNavigation) {
+      restoreMenuFocusRef.current = false;
+      setNavigationOpen(false);
+      window.setTimeout(moveToTarget, 120);
+    } else {
+      moveToTarget();
+    }
+  };
+
+  const closeNavigation = (restoreFocus = true) => {
+    restoreMenuFocusRef.current = restoreFocus;
+    setNavigationOpen(false);
   };
 
   return (
@@ -275,17 +358,59 @@ function App() {
       <canvas id="gradient-canvas" data-transition-in aria-hidden="true" />
       <a className="dmx-skip" href="#projets" onClick={handleAnchor}>Aller au contenu</a>
 
-      <header className="dmx-topbar">
-        <div className="dmx-topbar__row">
+      <header className="dmx-mobilebar">
+        <a className="dmx-wordmark" href="#home" onClick={handleAnchor} aria-label="DevMatch — accueil">
+          <img src={logoSource} width="48" height="48" alt="Logo DevMatch" />
+          <span>DevMatch</span>
+        </a>
+        <button
+          className="dmx-menu-toggle"
+          type="button"
+          ref={menuButtonRef}
+          aria-controls="dmx-sidebar"
+          aria-expanded={navigationOpen}
+          onClick={() => {
+            restoreMenuFocusRef.current = false;
+            setNavigationOpen(true);
+          }}
+        >
+          <span>Menu</span>
+          <span className="dmx-menu-toggle__mark" aria-hidden="true"><i /><i /></span>
+        </button>
+      </header>
+
+      <button
+        className="dmx-sidebar-overlay"
+        type="button"
+        aria-label="Fermer la navigation"
+        tabIndex={-1}
+        data-open={navigationOpen ? 'true' : 'false'}
+        onClick={() => closeNavigation()}
+      />
+
+      <aside
+        className="dmx-sidebar"
+        id="dmx-sidebar"
+        data-open={navigationOpen ? 'true' : 'false'}
+        aria-hidden={!desktopNavigation && !navigationOpen}
+        inert={!desktopNavigation && !navigationOpen}
+      >
+        <div className="dmx-sidebar__head">
           <a className="dmx-wordmark" href="#home" onClick={handleAnchor} aria-label="DevMatch — accueil">
             <img src={logoSource} width="48" height="48" alt="Logo DevMatch" />
             <span>DevMatch</span>
           </a>
-          <a className="dmx-topbar__discord" href={DISCORD_INVITE} target="_blank" rel="noopener noreferrer">
-            Discord <span aria-hidden="true">↗</span>
-          </a>
+          <button
+            className="dmx-sidebar__close"
+            type="button"
+            ref={closeButtonRef}
+            aria-label="Fermer la navigation"
+            onClick={() => closeNavigation()}
+          >
+            <span aria-hidden="true" />
+          </button>
         </div>
-        <nav className="dmx-topbar__nav" aria-label="Navigation principale">
+        <nav className="dmx-sidebar__nav" aria-label="Navigation principale">
           {NAV_ITEMS.map(([id, label]) => (
             <a
               key={id}
@@ -293,11 +418,19 @@ function App() {
               onClick={handleAnchor}
               aria-current={activeSection === id ? 'location' : undefined}
             >
-              {label}
+              <span>{label}</span>
+              <span aria-hidden="true">{String(NAV_ITEMS.findIndex(([itemId]) => itemId === id) + 1).padStart(2, '0')}</span>
             </a>
           ))}
         </nav>
-      </header>
+        <a className="dmx-sidebar__discord" href={DISCORD_INVITE} target="_blank" rel="noopener noreferrer">
+          <span>
+            <small>Serveur communautaire</small>
+            Rejoindre Discord
+          </span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </aside>
 
       <main>
         <section className="dmx-hero" id="home" aria-labelledby="dmx-hero-title">
@@ -431,10 +564,6 @@ function App() {
         </section>
       </main>
 
-      <a className="dmx-discord-float" href={DISCORD_INVITE} target="_blank" rel="noopener noreferrer" aria-label="Rejoindre le serveur Discord DevMatch">
-        <img src={discordSource} width="64" height="64" alt="Icône du serveur Discord DevMatch" />
-        <span>Rejoindre Discord</span>
-      </a>
     </div>
   );
 }

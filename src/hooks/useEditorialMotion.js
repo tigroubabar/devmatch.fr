@@ -5,7 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const NAV_OFFSET = 112;
+function isDesktopNavigation() {
+  return window.matchMedia('(min-width: 64rem)').matches;
+}
 
 function focusSection(target) {
   const hadTabIndex = target.hasAttribute('tabindex');
@@ -19,7 +21,9 @@ function focusSection(target) {
   };
 
   target.addEventListener('blur', restore, { once: true });
-  window.setTimeout(restore, 1200);
+  window.setTimeout(() => {
+    if (document.activeElement !== target) restore();
+  }, 1200);
 }
 
 export function useEditorialMotion(rootRef) {
@@ -123,14 +127,15 @@ export function useEditorialMotion(rootRef) {
     const lenis = lenisRef.current;
     if (lenis) {
       lenis.scrollTo(target, {
-        offset: -NAV_OFFSET,
+        offset: isDesktopNavigation() ? -16 : 0,
         duration: 0.75,
         onComplete,
       });
       return;
     }
 
-    const targetTop = target.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
+    const navigationOffset = isDesktopNavigation() ? 16 : 64;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY - navigationOffset;
     window.scrollTo({ top: targetTop, behavior: 'auto' });
     onComplete?.();
   };
