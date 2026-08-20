@@ -1,11 +1,14 @@
-export const SUPABASE_URL = 'https://ydycfgsglxutfsojymnn.supabase.co';
-export const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlkeWNmZ3NnbHh1dGZzb2p5bW5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3NTg4NTksImV4cCI6MjEwMTMzNDg1OX0.G79z9vLH1gMR3f_deZt3hc36zbttYMGZ7AiNzF6xRBE';
-export const DISCORD_INVITE = 'https://discord.gg/DS4gegMMUK';
+/** @typedef {import('./project-types.js').Project} Project */
 
-export const DEMO_PROJECTS = Object.freeze([
+/** @type {ReadonlyArray<Project>} */
+
+const supabase_url = "https://ydycfgsglxutfsojymnn.supabase.co";
+const supabase_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlkeWNmZ3NnbHh1dGZzb2p5bW5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3NTg4NTksImV4cCI6MjEwMTMzNDg1OX0.G79z9vLH1gMR3f_deZt3hc36zbttYMGZ7AiNzF6xRBE";
+
+export const demoProjects = Object.freeze([
   {
     id: 'nova',
-    title: 'Nova — suivi',
+    title: "Nova — suivi",
     description: "Application mobile de suivi d'habitudes avec rappels et fonctionnement hors ligne.",
     languages: ['Flutter', 'Supabase'],
     difficulty: '3',
@@ -61,9 +64,7 @@ export const DEMO_PROJECTS = Object.freeze([
     description: 'Extension de navigateur qui enregistre les changements d’un projet pour préparer un journal de versions.',
     languages: ['JavaScript'],
     difficulty: '2',
-    verified: true,
-    openSource: false,
-    owner: 'yohan_b',
+    verified: true,    openSource: false,    owner: 'yohan_b',
     ownerUsername: 'yohan_b',
     members: ['yohan_b', 'anais'],
     accent: 5,
@@ -82,3 +83,9 @@ export const DEMO_PROJECTS = Object.freeze([
     accent: 6,
   },
 ]);
+
+export { supabase_url, supabase_key };
+
+// Lien vers le serveur Discord de la communauté.
+// Remplacez par votre invite réelle (ex: https://discord.gg/xxxxx)
+export const discordInvite = 'https://discord.gg/DS4gegMMUK';
