@@ -3,6 +3,7 @@
  * @property {string} id Identifiant unique du projet.
  * @property {string} title Nom public du projet.
  * @property {string} description Résumé affiché dans la liste.
+ * @property {string} [long_description] Description détaillée du projet.
  * @property {string} difficulty Valeur textuelle de difficulté, de "1" à "5".
  * @property {boolean} verified Indique si le projet est vérifié.
  * @property {boolean} [openSource] Indique si le projet est open source.

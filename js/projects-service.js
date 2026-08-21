@@ -13,7 +13,7 @@ import { demoProjects, supabase_url, supabase_key } from './projects-data.js';
 export async function getProjects() {
   try {
     const response = await fetch(
-      `${supabase_url}/rest/v1/projects?select=id,title,description,languages,owner,owner_username,members,difficulty,verified,open_source&verified=eq.true`,
+      `${supabase_url}/rest/v1/projects?select=id,title,description,long_description,languages,owner,owner_username,members,difficulty,verified,open_source&verified=eq.true`,
       {
         headers: {
           apikey: supabase_key,

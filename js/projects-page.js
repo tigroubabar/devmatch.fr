@@ -3,6 +3,13 @@ import { discordInvite } from './projects-data.js';
 
 const grid = document.getElementById('projectsGrid');
 const state = document.getElementById('projectsState');
+const modal = document.getElementById('projectDetailsModal');
+const modalTitle = document.getElementById('projectDetailsTitle');
+const modalDescription = document.getElementById('projectDetailsDescription');
+const modalTags = document.getElementById('projectDetailsTags');
+const modalMeta = document.getElementById('projectDetailsMeta');
+const modalLongDescription = document.getElementById('projectDetailsLongDescription');
+const closeModalButton = document.getElementById('closeProjectDetails');
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>'"]/g, (character) => ({
@@ -41,6 +48,46 @@ function difficultyStars(value) {
   return fallback || '☆☆☆☆☆';
 }
 
+function showProjectDetails(project) {
+  if (!modal || !modalTitle || !modalDescription || !modalTags || !modalMeta || !modalLongDescription) return;
+
+  const owner = project.ownerUsername || project.owner || project.author || 'Anonyme';
+  const count = typeof project.memberCount === 'number'
+    ? project.memberCount
+    : Array.isArray(project.members)
+      ? project.members.length
+      : 0;
+  const openSourceLabel = project.openSource ? '🔓 Open Source' : '🔒 Propriétaire';
+
+  modalTitle.textContent = project.title;
+  modalDescription.textContent = project.description;
+  modalTags.innerHTML = [
+    ...(project.languages || []).map((language) => `<span class="tag tag-lang">${escapeHtml(language)}</span>`),
+    `<span class="tag tag-diff-stars">${escapeHtml(difficultyStars(project.difficulty))}</span>`,
+    `<span class="tag tag-open-source">${openSourceLabel}</span>`,
+  ].join('');
+  modalMeta.textContent = `${owner} · ${memberLabel(count)}`;
+  modalLongDescription.textContent = project.long_description || 'Aucune description détaillée disponible.';
+  modal.showModal();
+}
+
+function setupProjectDetails() {
+  if (!grid || !modal) return;
+
+  grid.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-project-details]');
+    if (!button) return;
+
+    const project = button._project;
+    if (project) showProjectDetails(project);
+  });
+
+  closeModalButton?.addEventListener('click', () => modal.close());
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) modal.close();
+  });
+}
+
 function projectTemplate(project) {
   const stars = difficultyStars(project.difficulty);
   const accent = Number.isInteger(project.accent) && project.accent >= 1 && project.accent <= 6
@@ -76,6 +123,7 @@ function projectTemplate(project) {
       </div>
       <div class="project-cta">
         <a class="btn btn-primary btn-full" href="${discordInvite}" target="_blank" rel="noopener noreferrer">Rejoindre le projet</a>
+        <button class="btn btn-secondary btn-full" type="button" data-project-details>Voir les détails</button>
       </div>
     </article>
   `;
@@ -95,6 +143,9 @@ async function renderProjects() {
     }
 
     grid.innerHTML = projects.map(projectTemplate).join('');
+    grid.querySelectorAll('[data-project-details]').forEach((button, index) => {
+      button._project = projects[index];
+    });
     state.hidden = true;
     window.DevMatch?.observeReveal(grid.querySelectorAll('.reveal'));
   } catch (error) {
@@ -104,4 +155,5 @@ async function renderProjects() {
   }
 }
 
+setupProjectDetails();
 renderProjects();
