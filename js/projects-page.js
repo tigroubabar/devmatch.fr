@@ -33,6 +33,17 @@ function memberLabel(count) {
   return `${count} ${count > 1 ? 'membres' : 'membre'}`;
 }
 
+function projectDisplayTitle(project) {
+  const id = project?.id;
+  const title = project?.title || '';
+
+  if (id === undefined || id === null || id === '') {
+    return title;
+  }
+
+  return `#${id} - ${title}`;
+}
+
 function difficultyStars(value) {
   const count = Number(value);
   if (Number.isInteger(count) && count >= 1 && count <= 5) {
@@ -59,7 +70,7 @@ function showProjectDetails(project) {
       : 0;
   const openSourceLabel = project.openSource ? '🔓 Open Source' : '🔒 Propriétaire';
 
-  modalTitle.textContent = project.title;
+  modalTitle.textContent = projectDisplayTitle(project);
   modalDescription.textContent = project.description;
   modalTags.innerHTML = [
     ...(project.languages || []).map((language) => `<span class="tag tag-lang">${escapeHtml(language)}</span>`),
@@ -109,7 +120,7 @@ function projectTemplate(project) {
   return `
     <article class="card project-card reveal">
       <div class="top">
-        <h3>${escapeHtml(project.title)}</h3>
+        <h3>${escapeHtml(projectDisplayTitle(project))}</h3>
       </div>
       <p>${escapeHtml(project.description)}</p>
       <div class="tags">
@@ -129,12 +140,25 @@ function projectTemplate(project) {
   `;
 }
 
+function sortProjectsById(projects) {
+  return [...projects].sort((a, b) => {
+    const idA = Number(a?.id ?? Number.MAX_SAFE_INTEGER);
+    const idB = Number(b?.id ?? Number.MAX_SAFE_INTEGER);
+
+    if (Number.isNaN(idA) || Number.isNaN(idB)) {
+      return String(a?.id ?? '').localeCompare(String(b?.id ?? ''));
+    }
+
+    return idA - idB;
+  });
+}
+
 async function renderProjects() {
   if (!grid || !state) return;
   setState('', 'loading');
 
   try {
-    const projects = await getProjects();
+    const projects = sortProjectsById(await getProjects());
 
     if (!projects.length) {
       grid.replaceChildren();
