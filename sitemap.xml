@@ -4,9 +4,12 @@
         <loc>https://devmatch.fr/</loc>
     </url>
     <url>
-        <loc>https://devmatch.fr/mentions-legales.html</loc>
+        <loc>https://devmatch.fr/mentions-legales/</loc>
     </url>
     <url>
-        <loc>https://devmatch.fr/confidentialite.html</loc>
+        <loc>https://devmatch.fr/confidentialite/</loc>
+    </url>
+    <url>
+        <loc>https://devmatch.fr/discord/</loc>
     </url>
 </urlset>

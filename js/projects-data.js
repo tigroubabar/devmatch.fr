@@ -88,4 +88,4 @@ export { supabase_url, supabase_key };
 
 // Lien vers le serveur Discord de la communauté.
 // Remplacez par votre invite réelle (ex: https://discord.gg/xxxxx)
-export const discordInvite = 'https://discord.gg/DS4gegMMUK';
+export const discordInvite = 'https://devmatch.fr/discord';
