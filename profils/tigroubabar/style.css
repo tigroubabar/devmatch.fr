@@ -1,0 +1,296 @@
+/* ==============================
+   TIGROUBABAR — PERSONAL WEBSITE
+============================== */
+
+
+
+html,
+body {
+  background: #10100b !important;
+  color: #E5E1ED;
+  min-height: 100%;
+  font-family: "Avolisse", sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.developer-profile {
+  background: transparent;
+}
+
+
+
+.developer-profile {
+  width: min(850px, calc(100% - 48px));
+  margin: 90px auto;
+  color: #E5E1ED;
+  font-family: inherit;
+  margin-top: 0;
+}
+
+/* INTRO */
+
+.profile-header {
+  padding: 10px 0 45px;
+  border-bottom: 1px solid #302B3A;
+}
+
+.profile-identity {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.profile-avatar {
+  width: 82px;
+  height: 82px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #29243A;
+  border: 1px solid #fffa00;
+  border-radius: 100px;
+  font-size: 32px;
+  font-weight: 600;
+  color: #B9A7ED;
+  overflow: hidden;
+}
+
+.profile-heading h1 {
+  font-size: 38px;
+  font-weight: 650;
+  margin: 0 0 8px;
+  font-family: "Sakura", sans-serif;
+  letter-spacing: 2px;
+  color: #f9f8ca;
+  text-shadow:
+    0 0 3px #fffa00;
+}
+
+.profile-subtitle {
+  color: #A39AAE;
+  font-size: 14px;
+  margin: 0;
+}
+
+.profile-bio {
+  color: #BDB6C8;
+  font-size: 15px;
+  line-height: 1.9;
+  max-width: 690px;
+  margin: 0;
+}
+
+/* SECTIONS */
+
+.profile-section {
+  padding: 27px 0;
+  border-bottom: 1px solid #302B3A;
+}
+
+.profile-section h2 {
+  font-size: 22px;
+  font-weight: 550;
+  letter-spacing: -0.5px;
+  margin: 0 0 16px;
+  color: #E5E1ED;
+}
+
+.profile-section>p {
+  color: #AAA3B5;
+  font-size: 14px;
+  line-height: 1.9;
+  margin: 0;
+  max-width: 720px;
+}
+
+/* TECHNOLOGIES */
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
+.tech-list span {
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  color: #B9A7ED;
+  font-size: 14px;
+}
+
+.tech-list span:not(:last-child)::after {
+  content: "·";
+  color: #625A70;
+  margin-left: 18px;
+}
+
+/* PROJECT */
+
+.project-card {
+  padding: 8px 0 8px 20px;
+  background: none;
+  border: none;
+  border-left: 2px solid #66528F;
+  border-radius: 0;
+  transition: border-color 0.2s;
+}
+
+.project-card:hover {
+  border-color: #B9A7ED;
+}
+
+.project-category {
+  display: none;
+}
+
+.project-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.project-card p {
+  color: #AAA3B5;
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0 0 13px;
+  max-width: 680px;
+}
+
+.project-card a {
+  color: #B9A7ED;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.project-card a:hover {
+  color: white;
+}
+
+/* SOCIAL */
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.social-links a, .social-links p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #E5E1ED;
+  text-decoration: none;
+  font-family: "Sakura", sans-serif;
+}
+
+.social-links p {
+  margin: 0;
+}
+
+.social-links a:hover {
+  color: #B9A7ED;
+  border-color: #B9A7ED;
+}
+
+.social-links img {
+    width: 20px;
+    height: 20px;
+}
+
+/* FOOTER */
+
+.profile-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+  color: #777080;
+  font-size: 12px;
+}
+
+.profile-footer a {
+  color: #B9A7ED;
+  text-decoration: none;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .developer-profile {
+    width: calc(100% - 36px);
+    margin: 45px auto;
+  }
+
+  .profile-identity {
+    gap: 15px;
+  }
+
+  .profile-avatar {
+    width: 62px;
+    height: 62px;
+    font-size: 25px;
+  }
+
+  .profile-heading h1 {
+    font-size: 29px;
+  }
+
+  .profile-subtitle {
+    font-size: 12px;
+  }
+
+  .profile-header {
+    padding-bottom: 30px;
+  }
+
+  .profile-section {
+    padding: 23px 0;
+  }
+
+  .profile-footer {
+    gap: 15px;
+  }
+}
+
+.devmatch_home a {
+  margin-left: 20px;
+  display: flex;
+  color: inherit;
+  text-decoration: none;
+}
+.devmatch_home img {
+  width: 32px;
+  height: 32px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+.devmatch_home h2 {
+  margin-left: 10px;
+  color: #E5E1ED;
+  text-decoration: none;
+}
+
+
+
+
+@font-face {
+  font-family: "Sakura";
+  src: url("/assets/sakura.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avolisse";
+  src: url("/assets/avolisse.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

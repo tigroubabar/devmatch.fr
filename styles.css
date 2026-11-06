@@ -22,7 +22,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: "Nunito", Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 body {
@@ -303,6 +303,95 @@ button {
 .project-card p {
   color: var(--muted);
   line-height: 1.7;
+}
+
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.profiles-grid .member-card {
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+#profilesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#profilesGrid .profile-tile {
+  position: relative;
+  display: flex;
+  min-height: 168px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--surface);
+  box-shadow: none;
+  color: var(--ink);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+#profilesGrid .profile-tile::before {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 36px;
+  height: 3px;
+  background: var(--accent);
+  content: "";
+  transition: width 0.2s ease;
+}
+
+#profilesGrid .profile-tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: var(--surface-soft);
+}
+
+#profilesGrid .profile-tile:hover::before {
+  width: calc(100% + 2px);
+}
+
+#profilesGrid .profile-tile:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.profile-tile-index {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.profile-tile-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.profile-tile-action {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.profile-tile-action span {
+  color: var(--accent);
+  font-size: 1.2rem;
 }
 
 .project-card .tags {
@@ -683,6 +772,165 @@ button {
   margin-left: 250px;
 }
 
+
+.auth-container {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#loginBtn {
+  cursor: pointer;
+  border: none;
+  font: inherit;
+  background-color: #5865F2;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#loginBtn[hidden] {
+  display: none;
+}
+
+.profile-menu-container {
+  position: relative;
+}
+
+.profile-btn {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid #5865f2;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #0b0b10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-btn[hidden] {
+  display: none;
+}
+
+#profileAvatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-menu[hidden] {
+  display: none;
+}
+
+.profile-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 220px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #14141c;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.profile-name {
+  margin: 0 0 12px;
+  overflow: hidden;
+  color: #fff;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-menu-action {
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  margin-top: 6px;
+}
+
+.profile-menu-action:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+#warning {
+  top: 20px;
+  left: 24px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #861d1d;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  border: #c51010 solid 2px;
+  max-width: 190px;
+  margin-bottom: 10px;
+}
+
+#warning[hidden] {
+  display: none;
+}
+
+.devmatch_home {
+  margin-left: 20px;
+  display: inline-flex;
+}
+.devmatch_home a {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+.devmatch_home img {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+}
+.devmatch_home h2 {
+  margin-left: 10px;
+}
+
+
+@media (max-width: 600px) {
+  .auth-container {
+    top: 12px;
+    right: 12px;
+  }
+
+  #loginBtn {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  .profile-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+
+
+.profile-btn[hidden] {
+  display: none !important;
+}
+
+
 @media (max-width: 1030px) {
   #sidebar {
     width: 220px;
@@ -725,6 +973,14 @@ button {
     grid-template-columns: 1fr;
   }
 
+  #profilesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profiles-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .steps,
   .channels,
   .value-list,
@@ -760,7 +1016,22 @@ button {
     grid-template-columns: 1fr;
   }
 
+  #profilesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .profiles-grid {
+    grid-template-columns: 1fr;
+  }
+
   .project-details-content {
     padding: 26px 20px;
   }
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/assets/nunito.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }

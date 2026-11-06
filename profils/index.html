@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profils des membres - DevMatch</title>
+  <meta name="description" content="Découvre les profils des membres de la communauté DevMatch." />
+  <link rel="canonical" href="https://devmatch.fr/profils/" />
+  <link rel="icon" href="/assets/logo.png" type="image/png" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+  <div class="auth-container">
+    <button id="loginBtn" class="btn btn-blurple">
+      Connexion avec<img src="/assets/discord.jpg" height="32" alt="Discord" />
+    </button>
+
+    <div class="profile-menu-container">
+      <button id="profileBtn" class="profile-btn" aria-label="Ouvrir le menu du profil" aria-expanded="false"
+        aria-controls="profileMenu" hidden>
+        <img id="profileAvatar" src="" alt="" />
+      </button>
+      <div id="profileMenu" class="profile-menu" aria-labelledby="profileName" hidden>
+        <p id="profileName" class="profile-name"></p>
+        <div id="warning" hidden>
+          Tu n'es pas membre du serveur Discord !
+          Tu ne pourras donc pas utiliser toutes les fonctionnalités !
+        </div>
+        <button id="myProjectsBtn" class="profile-menu-action" type="button">Mes projets</button>
+        <button id="logoutBtn" class="profile-menu-action" type="button">Déconnexion</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="devmatch_home">
+    <a href="/">
+      <img src="/assets/logo.png" alt="" />
+      <h2>DevMatch</h2>
+    </a>
+  </div>
+
+  <main class="container">
+    <section class="section-tight">
+      <div class="section-head">
+        <span class="kicker">Communauté</span>
+        <h1 style="margin: 0; font-size: clamp(2rem, 3.2vw, 2.9rem)">Profils des membres</h1>
+      </div>
+
+
+
+
+
+
+      <div class="profiles-grid">
+        <a class="card member-card" href="/profils/tigroubabar/">
+          <h3>@tigroubabar</h3>
+        </a>
+        <a class="card member-card" href="/profils/aurel___jnc/">
+          <h3>@aurel___jnc</h3>
+        </a>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">DevMatch</div>
+        <p style="color: var(--muted); max-width: 420px; line-height: 1.7; margin: 0">
+          Communauté francophone pour présenter un projet, trouver une équipe et échanger sur le développement.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Informations</h4>
+        <a href="/mentions-legales/">Mentions légales</a>
+        <a href="/confidentialite/">Politique de confidentialité</a>
+        <a href="https://devmatch.fr/discord" target="_blank" rel="noopener noreferrer">Serveur Discord</a>
+      </div>
+    </div>
+    <div class="container">
+      <p class="site-credit">© 2026 DevMatch</p>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+  <script type="module" src="/js/auth.js"></script>
+</body>
+
+</html>
