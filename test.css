@@ -1,0 +1,62 @@
+body {
+  background-color: #4c2416;
+  color: #eeebc2;
+  font-family: "Nunito", sans-serif;
+}
+
+
+/* other color : #73764A */
+
+.card {
+  display: flex;
+  width: fit-content;
+  margin: 200px;
+  padding: 30px;
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  border-top: 2px solid #ffb547;
+  border-bottom: 2px solid #ffb547;
+  left: -20px;
+  right: -20px;
+  
+  border-radius: 50px;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  border-left: 2px solid #ffb547;
+  border-right: 2px solid #ffb547;
+  top: -20px;
+  bottom: -20px;
+  
+  border-radius: 50px;
+}
+
+.card::before,
+.card::after {
+    transition: all 0.35s ease;
+}
+
+.card:hover::before {
+    border-radius: 0;
+    border-color: #eeebc2;
+}
+
+.card:hover::after {
+    border-radius: 0;
+    border-color: #eeebc2;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/assets/nunito.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
