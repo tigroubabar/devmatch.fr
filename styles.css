@@ -1,18 +1,18 @@
-﻿:root {
+:root {
   color-scheme: dark;
-  --bg: #0f1419;
-  --surface: #1a1f2e;
-  --surface-soft: #242d3d;
-  --surface-strong: #2d3748;
-  --ink: #e8eaed;
-  --ink-soft: #a8aeb7;
-  --muted: #7a8090;
-  --accent: #5a8dd4;
-  --accent-soft: #7a9fe0;
-  --border: #2d3748;
-  --shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
-  --radius: 24px;
-  --radius-sm: 14px;
+  --bg: #4c2416;
+  --surface: #4c2416;
+  --surface-soft: #4c2416;
+  --surface-strong: #4c2416;
+  --ink: #eeebc2;
+  --ink-soft: #eeebc2;
+  --muted: #ffb547;
+  --accent: #ffb547;
+  --accent-soft: #eeebc2;
+  --border: #ffb547;
+  --shadow: none;
+  --radius: 25px;
+  --radius-sm: 25px;
   --max-width: 1140px;
 }
 
@@ -29,8 +29,8 @@ body {
   margin: 0;
   min-height: 100vh;
   color: var(--ink);
-  background: radial-gradient(circle at top left, rgba(90, 141, 212, 0.08), transparent 45%),
-    linear-gradient(180deg, #1a1f2e 0%, #0f1419 100%);
+  background: radial-gradient(circle at top left, rgba(255,181,71, 0.08), transparent 45%),
+    linear-gradient(180deg, #4c2416 0%, #4c2416 100%);
 }
 
 img,
@@ -56,7 +56,7 @@ button {
 }
 
 ::selection {
-  background: rgba(90, 141, 212, 0.3);
+  background: rgba(255,181,71, 0.3);
 }
 
 #sidebar {
@@ -65,9 +65,9 @@ button {
   left: 0;
   width: 240px;
   height: 100vh;
-  background: rgba(26, 31, 46, 0.95);
-  border-right: 1px solid var(--border);
-  box-shadow: 10px 0 40px rgba(0, 0, 0, 0.3);
+  background: rgba(76,36,22, 0.95);
+  border-right: 0px solid var(--border);
+  box-shadow: 10px 0 40px rgba(76,36,22, 0.3);
   overflow-y: auto;
   padding: 28px 20px;
   z-index: 1000;
@@ -87,7 +87,7 @@ button {
 #sidebar .nav-inner {
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 44px;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -98,7 +98,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 12px;
+  padding-bottom: 28px;
 }
 
 #sidebar .sidebar-logo img {
@@ -122,7 +122,7 @@ button {
 #sidebar .nav-links {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 26px;
 }
 
 #sidebar .nav-links a {
@@ -133,14 +133,14 @@ button {
   width: 100%;
   min-height: 44px;
   padding: 12px 14px;
-  border-radius: 14px;
+  border-radius: 7px;
   color: var(--ink-soft);
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 #sidebar .nav-links a:hover,
 #sidebar .nav-links a.active {
-  background: rgba(90, 141, 212, 0.2);
+  background: rgba(255,181,71, 0.2);
   color: var(--accent);
 }
 
@@ -155,7 +155,7 @@ button {
   right: 0;
   top: 0;
   bottom: 0;
-  border-radius: 14px;
+  border-radius: 7px;
   pointer-events: none;
 }
 
@@ -176,12 +176,18 @@ button {
   display: flex;
   align-items: center;
   padding-top: 0;
-  background: linear-gradient(130deg, rgba(90, 141, 212, 0.1), transparent 52%),
-    radial-gradient(circle at 20% 20%, rgba(42, 51, 69, 0.5), transparent 25%);
+  background: linear-gradient(130deg, rgba(255,181,71, 0.1), transparent 52%),
+    radial-gradient(circle at 20% 20%, rgba(76,36,22, 0.5), transparent 25%);
+  
 }
 
 .hero {
-  padding: 0 0 0;
+  padding: 0 30px;
+}
+
+#sidebar ~ .hero-bg .hero {
+  margin-left: 100px;
+  margin-right: auto;
 }
 
 .hero h1 {
@@ -192,13 +198,18 @@ button {
 }
 
 .hero .sub {
-  display: none;
+  display: block;
+  max-width: 660px;
+  margin: 24px 0 0;
+  color: var(--ink-soft);
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
 
 .hero-cta {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 32px;
   margin-top: 32px;
 }
 
@@ -207,7 +218,7 @@ button {
   align-items: center;
   justify-content: center;
   padding: 14px 22px;
-  border-radius: 999px;
+  border-radius: 499.5px;
   font-weight: 700;
   letter-spacing: 0.01em;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
@@ -219,20 +230,20 @@ button {
 
 .btn-primary {
   background: var(--accent);
-  color: #fff;
-  box-shadow: 0 16px 35px rgba(90, 141, 212, 0.2);
+  color: #eeebc2;
+  box-shadow: 0 16px 35px rgba(255,181,71, 0.2);
 }
 
 .btn-ghost {
   background: var(--accent);
-  color: #fff;
-  box-shadow: 0 16px 35px rgba(90, 141, 212, 0.2);
+  color: #eeebc2;
+  box-shadow: 0 16px 35px rgba(255,181,71, 0.2);
 }
 
 .btn-blurple {
   background: var(--accent);
-  color: #fff;
-  box-shadow: 0 16px 35px rgba(90, 141, 212, 0.2);
+  color: #eeebc2;
+  box-shadow: 0 16px 35px rgba(255,181,71, 0.2);
 }
 
 .section-tight {
@@ -288,7 +299,7 @@ button {
   border-radius: 18px;
   display: grid;
   place-items: center;
-  color: #fff;
+  color: #eeebc2;
   font-weight: 700;
   font-size: 1.15rem;
 }
@@ -312,7 +323,7 @@ button {
 }
 
 .profiles-grid .member-card {
-  border-radius: 6px;
+  border-radius: 3px;
   box-shadow: none;
 }
 
@@ -403,24 +414,24 @@ button {
 .tag {
   display: inline-flex;
   padding: 8px 12px;
-  border-radius: 999px;
+  border-radius: 499.5px;
   font-size: 0.78rem;
   font-weight: 700;
 }
 
 .tag-lang {
-  background: rgba(90, 141, 212, 0.2);
-  color: #7a9fe0;
+  background: rgba(255,181,71, 0.2);
+  color: #eeebc2;
 }
 
 .tag-open-source {
-  background: rgba(76, 175, 80, 0.2);
-  color: #4caf50;
+  background: rgba(255,181,71, 0.2);
+  color: #ffb547;
 }
 
 .tag-diff-stars {
-  background: rgba(180, 120, 20, 0.2);
-  color: #d4a83f;
+  background: rgba(255,181,71, 0.2);
+  color: #ffb547;
 }
 
 .project-card .meta {
@@ -449,7 +460,7 @@ button {
   display: block;
   width: 100%;
   padding: 12px 16px;
-  border-radius: 12px;
+  border-radius: 6px;
   text-align: center;
   cursor: pointer;
 }
@@ -475,7 +486,7 @@ button {
 }
 
 .project-details-modal::backdrop {
-  background: rgba(0, 0, 0, 0.68);
+  background: rgba(76,36,22, 0.68);
 }
 
 .project-details-content {
@@ -520,7 +531,7 @@ button {
   right: 18px;
   width: 36px;
   height: 36px;
-  border-radius: 50%;
+  border-radius: 25%;
   color: var(--ink-soft);
   background: var(--surface-soft);
   font-size: 1.5rem;
@@ -537,7 +548,7 @@ button {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #3f5da8, #7a90d3);
+  background: linear-gradient(135deg, #ffb547, #ffb547);
 }
 
 .channels {
@@ -589,9 +600,9 @@ button {
 .channel .h {
   width: 38px;
   height: 38px;
-  border-radius: 14px;
-  background: rgba(90, 141, 212, 0.2);
-  color: #7a9fe0;
+  border-radius: 7px;
+  background: rgba(255,181,71, 0.2);
+  color: #eeebc2;
   display: grid;
   place-items: center;
   font-weight: 700;
@@ -642,9 +653,9 @@ button {
 }
 
 .cta-block {
-  background: linear-gradient(135deg, rgba(90, 141, 212, 0.25), rgba(75, 110, 170, 0.25));
-  border-radius: 28px;
-  color: #fff;
+  background: linear-gradient(135deg, rgba(255,181,71, 0.25), rgba(255,181,71, 0.25));
+  border-radius: 14px;
+  color: #eeebc2;
   padding: 42px 40px;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -660,9 +671,13 @@ button {
 
 .cta-content p {
   max-width: 520px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(238,235,194, 0.8);
   line-height: 1.8;
   margin: 22px 0 0;
+}
+
+.cta-content .btn {
+  margin-top: 24px;
 }
 
 .cta-character {
@@ -676,7 +691,7 @@ button {
 
 .footer {
   padding: 80px 0 60px;
-  background: #1a1f2e;
+  background: #4c2416;
 }
 
 .footer-grid {
@@ -702,7 +717,7 @@ button {
   bottom: 20px;
   width: 52px;
   height: 52px;
-  border-radius: 12px;
+  border-radius: 6px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -711,7 +726,7 @@ button {
 }
 .discord-fab:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 36px rgba(76,36,22, 0.4);
 }
 .discord-fab img {
   width: 100%;
@@ -787,7 +802,7 @@ button {
   cursor: pointer;
   border: none;
   font: inherit;
-  background-color: #5865F2;
+  background-color: #ffb547;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -804,10 +819,10 @@ button {
   width: 44px;
   height: 44px;
   padding: 0;
-  border: 2px solid #5865f2;
+  border: 2px solid #ffb547;
   border-radius: 50%;
   overflow: hidden;
-  background: #0b0b10;
+  background: #4c2416;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -835,16 +850,16 @@ button {
   right: 0;
   width: 220px;
   padding: 14px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: #14141c;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--accent);
+  border-radius: 7px;
+  background: #4c2416;
+  box-shadow: 0 12px 32px rgba(76,36,22, 0.35);
 }
 
 .profile-name {
   margin: 0 0 12px;
   overflow: hidden;
-  color: #fff;
+  color: #eeebc2;
   font-weight: 700;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -854,9 +869,9 @@ button {
   width: 100%;
   padding: 10px 12px;
   border: 0;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  border-radius: 4px;
+  background: rgba(238,235,194, 0.08);
+  color: #eeebc2;
   cursor: pointer;
   font: inherit;
   text-align: left;
@@ -864,7 +879,7 @@ button {
 }
 
 .profile-menu-action:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(238,235,194, 0.14);
 }
 
 #warning {
@@ -874,11 +889,11 @@ button {
   display: flex;
   align-items: center;
   gap: 12px;
-  background-color: #861d1d;
-  color: #fff;
+  background-color: #4c2416;
+  color: #eeebc2;
   padding: 10px;
-  border-radius: 10px;
-  border: #c51010 solid 2px;
+  border-radius: 5px;
+  border: #ffb547 solid 2px;
   max-width: 190px;
   margin-bottom: 10px;
 }
@@ -960,6 +975,11 @@ button {
     margin-left: 0;
   }
 
+  #sidebar ~ .hero-bg .hero {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   #sidebar .nav-inner {
     flex-direction: column;
     gap: 18px;
@@ -999,6 +1019,10 @@ button {
     padding: 0 20px 60px;
   }
 
+  .hero {
+    padding: 0 20px;
+  }
+
   .hero h1 {
     font-size: clamp(2rem, 9vw, 2.8rem);
   }
@@ -1034,4 +1058,495 @@ button {
   src: url("/assets/nunito.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+}
+
+body {
+  background: var(--bg);
+}
+
+#sidebar,
+.footer,
+.card,
+.channel,
+.feature-capture,
+.value,
+.profile-menu,
+.project-details-modal,
+.profile-menu-action,
+.modal-close,
+#warning {
+  background-color: var(--bg);
+  box-shadow: none;
+}
+
+.hero-bg,
+.cta-block {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.card,
+.channel,
+.feature-capture,
+.value,
+.cta-block,
+#profilesGrid .profile-tile,
+.profile-btn,
+.project-card,
+.tag,
+a,
+button,
+input,
+textarea,
+select {
+  position: relative;
+  isolation: isolate;
+}
+
+.card,
+.channel,
+.feature-capture,
+.value,
+.cta-block,
+#profilesGrid .profile-tile,
+.project-details-modal,
+.profile-menu,
+.profile-btn,
+.profile-menu-action,
+.modal-close,
+#warning,
+.project-card,
+.tag,
+a,
+button,
+input,
+textarea,
+select {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.card::before,
+.channel::before,
+.feature-capture::before,
+.value::before,
+.cta-block::before,
+#profilesGrid .profile-tile::before,
+.project-details-modal::before,
+.profile-menu::before,
+.profile-btn::before,
+.profile-menu-action::before,
+.modal-close::before,
+#warning::before,
+.project-card::before,
+.tag::before,
+#sidebar .nav-links a::before,
+a::before,
+button::before,
+input::before,
+textarea::before,
+select::before,
+.card::after,
+.channel::after,
+.feature-capture::after,
+.value::after,
+.cta-block::after,
+#profilesGrid .profile-tile::after,
+.project-details-modal::after,
+.profile-menu::after,
+.profile-btn::after,
+.profile-menu-action::after,
+.modal-close::after,
+#warning::after,
+.project-card::after,
+.tag::after,
+#sidebar .nav-links a::after,
+a::after,
+button::after,
+input::after,
+textarea::after,
+select::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  pointer-events: none;
+  transition: all 0.35s ease;
+}
+
+.card::before,
+.channel::before,
+.feature-capture::before,
+.value::before,
+.cta-block::before,
+#profilesGrid .profile-tile::before,
+.project-details-modal::before,
+.profile-menu::before,
+.profile-btn::before,
+.profile-menu-action::before,
+.modal-close::before,
+#warning::before,
+.project-card::before,
+.tag::before,
+#sidebar .nav-links a::before,
+a::before,
+button::before,
+input::before,
+textarea::before,
+select::before {
+  left: -20px;
+  right: -20px;
+  border-top: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
+.card::after,
+.channel::after,
+.feature-capture::after,
+.value::after,
+.cta-block::after,
+#profilesGrid .profile-tile::after,
+.project-details-modal::after,
+.profile-menu::after,
+.profile-btn::after,
+.profile-menu-action::after,
+.modal-close::after,
+#warning::after,
+.project-card::after,
+.tag::after,
+#sidebar .nav-links a::after,
+a::after,
+button::after,
+input::after,
+textarea::after,
+select::after {
+  top: -20px;
+  bottom: -20px;
+  border-right: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+}
+
+.card:hover::before,
+.channel:hover::before,
+.feature-capture:hover::before,
+.value:hover::before,
+.cta-block:hover::before,
+#profilesGrid .profile-tile:hover::before,
+.project-details-modal:hover::before,
+.profile-menu:hover::before,
+.profile-btn:hover::before,
+.profile-menu-action:hover::before,
+.modal-close:hover::before,
+#warning:hover::before,
+.project-card:hover::before,
+.tag:hover::before,
+#sidebar .nav-links a:hover::before,
+a:hover::before,
+button:hover::before,
+.card:hover::after,
+.channel:hover::after,
+.feature-capture:hover::after,
+.value:hover::after,
+.cta-block:hover::after,
+#profilesGrid .profile-tile:hover::after,
+.project-details-modal:hover::after,
+.profile-menu:hover::after,
+.profile-btn:hover::after,
+.profile-menu-action:hover::after,
+.modal-close:hover::after,
+#warning:hover::after,
+.project-card:hover::after,
+.tag:hover::after,
+#sidebar .nav-links a:hover::after,
+a:hover::after,
+button:hover::after {
+  border-radius: 0;
+  border-color: var(--ink);
+}
+
+#profilesGrid .profile-tile::before,
+#sidebar .nav-links a::before {
+  width: auto;
+  height: auto;
+  background: none;
+}
+
+#profilesGrid .profile-tile:hover::before {
+  width: auto;
+}
+
+#profilesGrid .profile-tile:hover {
+  transform: none;
+  border-color: transparent;
+  background: var(--bg);
+}
+
+#sidebar .nav-links a:hover,
+#sidebar .nav-links a.active,
+.profile-menu-action:hover {
+  background: transparent;
+}
+
+#warning {
+  top: 0;
+  left: 0;
+  border-color: var(--accent);
+}
+
+#sidebar .nav-links a,
+#sidebar .nav-links a.active,
+.profile-menu-action,
+.profile-menu-action:hover,
+.modal-close,
+.modal-close:hover {
+  color: var(--ink);
+}
+
+.btn:hover,
+.discord-fab:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+a:hover,
+button:hover {
+  color: var(--ink);
+}
+
+.btn,
+.btn-primary,
+.btn-ghost,
+.btn-blurple,
+.btn-secondary,
+.project-cta .btn-full,
+#loginBtn,
+.profile-menu-action,
+.modal-close {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: none;
+}
+
+.project-card .author .dot {
+  background: var(--accent);
+}
+
+#sidebar .nav-links a::before,
+a::before,
+button::before {
+  left: -8px;
+  right: -8px;
+}
+
+#sidebar .nav-links a::after,
+a::after,
+button::after {
+  top: -8px;
+  bottom: -8px;
+}
+
+#sidebar .nav-links a::before,
+#sidebar .nav-links a::after,
+a::before,
+a::after,
+button::before,
+button::after {
+  border-radius: 15px;
+}
+
+.grid-3,
+.channels,
+.value-list,
+.profiles-grid,
+#profilesGrid,
+#createdProjects,
+#joinedProjects {
+  gap: 52px;
+}
+
+#createdProjects,
+#joinedProjects {
+  display: grid;
+}
+
+#createdProjects > .card,
+#joinedProjects > .card {
+  margin-top: 0 !important;
+}
+
+.section-tight > .card:has(#createdProjects) + .card {
+  margin-top: 44px !important;
+}
+
+#sidebar .brand::before,
+#sidebar .brand::after,
+#sidebar .sidebar-logo a::before,
+#sidebar .sidebar-logo a::after,
+.devmatch_home a::before,
+.devmatch_home a::after,
+.tag::before,
+.tag::after,
+.project-cta .btn-full::before,
+.project-cta .btn-full::after,
+.footer-col a::before,
+.footer-col a::after,
+.profile-btn::before,
+.profile-btn::after,
+.profile-menu::before,
+.profile-menu::after,
+.profile-menu-action::before,
+.profile-menu-action::after,
+.modal-close::before,
+.modal-close::after {
+  content: none;
+  display: none;
+}
+
+.discord-fab::before,
+.discord-fab::after {
+  content: none;
+  display: none;
+}
+
+.profile-menu {
+  border: 1px solid var(--accent);
+}
+
+.profile-btn {
+  border: 2px solid var(--accent);
+}
+
+#createdProjects,
+#joinedProjects {
+  gap: 60px;
+}
+
+#sidebar .nav-links a::before,
+#sidebar .nav-links a::after,
+a:not(.card)::before,
+a:not(.card)::after,
+button:not(.profile-btn)::before,
+button:not(.profile-btn)::after {
+  content: none;
+  display: none;
+}
+
+a:not(.card),
+button:not(.profile-btn) {
+  border: 1px solid var(--accent);
+  border-radius: 7px;
+  background: var(--bg);
+  box-shadow: none;
+}
+
+#sidebar .brand,
+#sidebar .sidebar-logo a,
+.devmatch_home a,
+.profile-footer a,
+.footer-col a {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+#loginBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 7px 12px;
+  border: 1px solid #5865f2;
+  border-radius: 6px;
+  background: #5865f2;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: none;
+  transition: none;
+}
+
+#loginBtn img {
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+#loginBtn:hover {
+  transform: none;
+  background: #5865f2;
+  border-color: #5865f2;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+#loginBtn:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.hero-actions-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1100;
+  display: flex;
+  width: 100%;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 3px 12px;
+  border-bottom: 0px solid var(--accent);
+  background: #4c2416;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.hero-actions-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.home-page {
+  padding-top: 44px;
+}
+
+.hero-actions-bar .btn {
+  width: auto;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.home-page .auth-container {
+  top: 58px;
+}
+
+@media (max-width: 900px) {
+  .hero-actions-bar {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-actions-bar {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 6px;
+    padding: 3px 8px;
+  }
+
+  .hero-actions-bar .btn {
+    flex: 0 0 auto;
+    padding: 4px 8px;
+    font-size: 0.72rem;
+    white-space: normal;
+  }
+
+  .home-page .auth-container {
+    top: 64px;
+  }
 }
